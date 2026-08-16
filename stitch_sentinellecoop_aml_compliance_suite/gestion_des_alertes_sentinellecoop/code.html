@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gestion des Alertes - SentinelleCoop</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-background": "#0d1c2f",
+                      "status-offline": "#64748B",
+                      "inverse-on-surface": "#ebf1ff",
+                      "on-secondary": "#ffffff",
+                      "primary": "#091426",
+                      "secondary-container": "#e0e3e5",
+                      "surface-container": "#e6eeff",
+                      "on-tertiary-fixed-variant": "#564427",
+                      "surface-dim": "#ccdbf4",
+                      "background": "#f8f9ff",
+                      "inverse-primary": "#bcc7de",
+                      "secondary-fixed": "#e0e3e5",
+                      "outline-variant": "#c5c6cd",
+                      "on-tertiary-fixed": "#271902",
+                      "error-container": "#ffdad6",
+                      "surface-tint": "#545f73",
+                      "warning": "#D97706",
+                      "on-primary-fixed": "#111c2d",
+                      "inverse-surface": "#233144",
+                      "surface-container-high": "#dde9ff",
+                      "on-error": "#ffffff",
+                      "surface-bright": "#f8f9ff",
+                      "secondary-fixed-dim": "#c4c7c9",
+                      "on-secondary-fixed": "#191c1e",
+                      "surface-container-highest": "#d5e3fd",
+                      "on-tertiary-container": "#a38c6a",
+                      "on-secondary-fixed-variant": "#444749",
+                      "on-primary-container": "#8590a6",
+                      "primary-fixed-dim": "#bcc7de",
+                      "on-surface": "#0d1c2f",
+                      "surface": "#f8f9ff",
+                      "on-error-container": "#93000a",
+                      "on-primary": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "border-default": "#E2E8F0",
+                      "primary-fixed": "#d8e3fb",
+                      "primary-container": "#1e293b",
+                      "danger": "#DC2626",
+                      "success": "#059669",
+                      "on-secondary-container": "#626567",
+                      "outline": "#75777d",
+                      "error": "#ba1a1a",
+                      "secondary": "#5c5f61",
+                      "surface-header": "#FFFFFF",
+                      "on-primary-fixed-variant": "#3c475a",
+                      "tertiary": "#1e1200",
+                      "tertiary-fixed": "#fadfb8",
+                      "tertiary-container": "#35260c",
+                      "tertiary-fixed-dim": "#ddc39d",
+                      "on-surface-variant": "#45474c",
+                      "surface-container-low": "#eff4ff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-variant": "#d5e3fd"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "header-height": "56px",
+                      "gutter": "16px",
+                      "sidebar-width": "260px",
+                      "cell-padding-h": "12px",
+                      "container-gap": "24px",
+                      "cell-padding-v": "8px"
+              },
+              "fontFamily": {
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "data-table": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "label-caps": [
+                              "Inter"
+                      ],
+                      "display": [
+                              "Inter"
+                      ],
+                      "caption": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "data-table": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "18px",
+                              {
+                                      "lineHeight": "24px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-caps": [
+                              "11px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "display": [
+                              "24px",
+                              {
+                                      "lineHeight": "32px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "caption": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "fontWeight": "500"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-sm text-body-sm m-0 p-0 overflow-hidden flex h-screen">
+<!-- Side Navigation -->
+<nav class="fixed left-0 top-0 h-screen w-[260px] bg-primary text-primary-fixed font-body-sm text-body-sm bg-primary border-r border-outline-variant flex flex-col h-full overflow-y-auto hidden md:flex z-50">
+<div class="p-gutter border-b border-outline-variant/20 flex flex-col items-start gap-1">
+<span class="font-headline-md text-headline-md font-bold text-on-primary">SentinelleCoop</span>
+<span class="font-caption text-caption text-on-primary-fixed-variant">Portail Compliance</span>
+</div>
+<div class="flex-1 py-4">
+<ul class="flex flex-col gap-1 px-2">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant transition-colors duration-200 cursor-pointer active:opacity-90" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                        Tableau de bord
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant transition-colors duration-200 cursor-pointer active:opacity-90" href="#">
+<span class="material-symbols-outlined" data-icon="filter_alt">filter_alt</span>
+                        Filtrage
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant transition-colors duration-200 cursor-pointer active:opacity-90" href="#">
+<span class="material-symbols-outlined" data-icon="person_search">person_search</span>
+                        Fiche Client
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded bg-primary-container text-on-primary-container font-semibold cursor-pointer active:opacity-90" href="#">
+<span class="material-symbols-outlined" data-icon="notifications_active" data-weight="fill" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+                        Alertes
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant transition-colors duration-200 cursor-pointer active:opacity-90" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+                        Gestion des listes
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant transition-colors duration-200 cursor-pointer active:opacity-90" href="#">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+                        Synchronisation
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant transition-colors duration-200 cursor-pointer active:opacity-90" href="#">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+                        Journal d'audit
+                    </a>
+</li>
+</ul>
+</div>
+<div class="border-t border-outline-variant/20 py-4">
+<ul class="flex flex-col gap-1 px-2">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant transition-colors duration-200 cursor-pointer active:opacity-90" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+                        Paramètres
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant transition-colors duration-200 cursor-pointer active:opacity-90" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+                        Déconnexion
+                    </a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col md:ml-[260px] h-screen w-full relative bg-surface">
+<!-- Top App Bar -->
+<header class="h-[56px] bg-surface-header border-b border-outline-variant flex justify-between items-center px-gutter w-full z-40 sticky top-0 shrink-0">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-extrabold text-on-surface md:hidden">SentinelleCoop</span>
+<div class="hidden md:flex items-center gap-2 text-on-surface-variant bg-surface-container-low px-3 py-1.5 rounded-full border border-border-default focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<span class="material-symbols-outlined text-[18px]">search</span>
+<input class="bg-transparent border-none outline-none text-body-sm font-body-sm w-64 text-on-surface placeholder:text-outline p-0 focus:ring-0" placeholder="Rechercher un client, une alerte..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex items-center gap-2 px-3 py-1 rounded-full border border-status-offline text-status-offline font-caption text-caption">
+<span class="w-2 h-2 rounded-full bg-status-offline"></span>
+                    Mode hors-ligne actif
+                </div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors text-on-surface-variant cursor-pointer">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<button class="p-2 rounded-full hover:bg-surface-container transition-colors text-on-surface-variant cursor-pointer relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 bg-danger rounded-full border border-surface-header"></span>
+</button>
+</div>
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-bold text-caption cursor-pointer hover:opacity-90 overflow-hidden border border-border-default">
+<img alt="Utilisateur Connecté" class="w-full h-full object-cover" data-alt="A professional headshot of a corporate compliance officer, 35 years old, wearing glasses and a crisp white shirt, sitting in a modern, well-lit office with a minimalist aesthetic. The lighting is soft and bright, emphasizing trust and institutional reliability." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAEcS8g48WH4yUozwC0xeB7gNeWIHFKG-NMg3jVRliZHGkLRdyIjopza79-3E-ec_gi_oiRXt-YYyh2hyozZPIRfkNyoIYHbEc6Cr2SXnX_JY1V60shwyMzSZBaqmEn67wdW4fUaoARRy4AYZlNz6y-RoUNyT2OU34PqZqdeeCd41cldossSht6BmnxDQnlxxiQNLfdkEHpIPM3Ar-U9u1YMt3_uoh5wDdGAL3CfduWMDpzmGietGUm"/>
+</div>
+</div>
+</header>
+<!-- Canvas -->
+<main class="flex-1 overflow-hidden flex flex-col p-gutter gap-container-gap bg-background">
+<!-- Page Header -->
+<div class="flex justify-between items-center shrink-0">
+<div>
+<h1 class="font-display text-display text-on-background">Gestion des Alertes</h1>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Surveillance des transactions suspectes et conformité AML.</p>
+</div>
+<div class="flex gap-2">
+<button class="px-4 py-2 bg-surface-header border border-border-default rounded text-on-surface font-caption text-caption font-semibold flex items-center gap-2 hover:bg-surface-container transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[18px]">download</span>
+                        Exporter
+                    </button>
+</div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="flex-1 grid grid-cols-12 gap-gutter overflow-hidden min-h-0">
+<!-- Table Section (Takes up most space) -->
+<div class="col-span-12 xl:col-span-8 flex flex-col bg-surface-header rounded-lg border border-border-default overflow-hidden h-full shadow-sm">
+<div class="px-4 py-3 border-b border-border-default flex justify-between items-center bg-surface-bright shrink-0">
+<div class="flex gap-4 items-center">
+<h2 class="font-headline-md text-[16px] leading-[24px] font-semibold text-on-background flex items-center gap-2">
+<span class="material-symbols-outlined text-warning text-[20px]">warning</span>
+                                File d'attente
+                            </h2>
+<span class="bg-surface-container px-2 py-0.5 rounded text-caption font-caption text-on-surface-variant">24 Alertes</span>
+</div>
+<div class="flex gap-2">
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant transition-colors border border-transparent hover:border-border-default">
+<span class="material-symbols-outlined text-[18px]">filter_list</span>
+</button>
+<button class="p-1.5 rounded hover:bg-surface-container text-on-surface-variant transition-colors border border-transparent hover:border-border-default">
+<span class="material-symbols-outlined text-[18px]">sort</span>
+</button>
+</div>
+</div>
+<div class="flex-1 overflow-auto bg-surface-header">
+<table class="w-full text-left border-collapse font-data-table text-data-table whitespace-nowrap">
+<thead class="bg-surface-container-low sticky top-0 z-10 border-b border-border-default">
+<tr>
+<th class="px-cell-padding-h py-cell-padding-v font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider font-semibold">Date</th>
+<th class="px-cell-padding-h py-cell-padding-v font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider font-semibold">Client</th>
+<th class="px-cell-padding-h py-cell-padding-v font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider font-semibold">Motif / Scénario</th>
+<th class="px-cell-padding-h py-cell-padding-v font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider font-semibold">Sévérité</th>
+<th class="px-cell-padding-h py-cell-padding-v font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider font-semibold">Statut</th>
+<th class="px-cell-padding-h py-cell-padding-v font-label-caps text-label-caps text-on-surface-variant uppercase tracking-wider font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-border-default text-on-surface">
+<tr class="hover:bg-surface-container-lowest transition-colors bg-primary-fixed/30 cursor-pointer group">
+<td class="px-cell-padding-h py-2 font-medium">2024-05-24</td>
+<td class="px-cell-padding-h py-2">KOFFI Mensah</td>
+<td class="px-cell-padding-h py-2 text-on-surface-variant">Smurfing</td>
+<td class="px-cell-padding-h py-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-error-container text-on-error-container border border-error-container/50">Elevée</span>
+</td>
+<td class="px-cell-padding-h py-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-primary-container text-on-primary">Nouvelle</span>
+</td>
+<td class="px-cell-padding-h py-2 text-right">
+<button class="p-1 rounded text-primary hover:bg-primary/10 transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors cursor-pointer group">
+<td class="px-cell-padding-h py-2 font-medium">2024-05-23</td>
+<td class="px-cell-padding-h py-2">SOGLO Justin</td>
+<td class="px-cell-padding-h py-2 text-on-surface-variant">PPE</td>
+<td class="px-cell-padding-h py-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-tertiary-fixed text-tertiary-container border border-tertiary-fixed-dim">Moyenne</span>
+</td>
+<td class="px-cell-padding-h py-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-surface-container-high text-on-surface-variant border border-outline-variant">En cours</span>
+</td>
+<td class="px-cell-padding-h py-2 text-right">
+<button class="p-1 rounded text-primary hover:bg-primary/10 transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors cursor-pointer group">
+<td class="px-cell-padding-h py-2 font-medium">2024-05-23</td>
+<td class="px-cell-padding-h py-2">ADJOVI Pierre</td>
+<td class="px-cell-padding-h py-2 text-on-surface-variant">Transaction Inhabituelle</td>
+<td class="px-cell-padding-h py-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-tertiary-fixed text-tertiary-container border border-tertiary-fixed-dim">Moyenne</span>
+</td>
+<td class="px-cell-padding-h py-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-surface-container-high text-on-surface-variant border border-outline-variant">En cours</span>
+</td>
+<td class="px-cell-padding-h py-2 text-right">
+<button class="p-1 rounded text-primary hover:bg-primary/10 transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors cursor-pointer group">
+<td class="px-cell-padding-h py-2 font-medium">2024-05-22</td>
+<td class="px-cell-padding-h py-2">DANSOU Marie</td>
+<td class="px-cell-padding-h py-2 text-on-surface-variant">Dépôt Espèces &gt; Seuil</td>
+<td class="px-cell-padding-h py-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-error-container text-on-error-container border border-error-container/50">Elevée</span>
+</td>
+<td class="px-cell-padding-h py-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-surface-container-high text-on-surface-variant border border-outline-variant">En cours</span>
+</td>
+<td class="px-cell-padding-h py-2 text-right">
+<button class="p-1 rounded text-primary hover:bg-primary/10 transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-lowest transition-colors cursor-pointer group">
+<td class="px-cell-padding-h py-2 font-medium">2024-05-21</td>
+<td class="px-cell-padding-h py-2">GBENOU Eric</td>
+<td class="px-cell-padding-h py-2 text-on-surface-variant">Virement International</td>
+<td class="px-cell-padding-h py-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold bg-surface-container text-on-surface-variant border border-outline-variant/50">Faible</span>
+</td>
+<td class="px-cell-padding-h py-2">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[11px] font-semibold text-success border border-success/30 bg-success/10">Clôturée</span>
+</td>
+<td class="px-cell-padding-h py-2 text-right">
+<button class="p-1 rounded text-primary hover:bg-primary/10 transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Detail View Panel (Right Column) -->
+<div class="col-span-12 xl:col-span-4 flex flex-col bg-surface-header rounded-lg border border-border-default overflow-hidden h-full shadow-lg xl:shadow-sm relative">
+<!-- Detail Header -->
+<div class="px-5 py-4 border-b border-border-default bg-surface-bright shrink-0 relative overflow-hidden">
+<div class="absolute top-0 right-0 w-32 h-32 bg-error-container/20 rounded-bl-full -z-0"></div>
+<div class="flex justify-between items-start mb-2 relative z-10">
+<div>
+<span class="text-caption font-caption text-on-surface-variant block mb-1">Alerte #AL-2024-892</span>
+<h3 class="font-headline-md text-headline-md font-bold text-on-background">KOFFI Mensah</h3>
+</div>
+<span class="inline-flex items-center px-2 py-1 rounded text-caption font-semibold bg-error-container text-on-error-container border border-error-container/50">Sévérité Elevée</span>
+</div>
+<div class="flex gap-3 text-caption font-caption text-on-surface-variant mt-3 relative z-10">
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">calendar_today</span> 2024-05-24</span>
+<span class="flex items-center gap-1"><span class="material-symbols-outlined text-[14px]">schedule</span> 09:14:22</span>
+</div>
+</div>
+<!-- Detail Content -->
+<div class="flex-1 overflow-y-auto p-5 flex flex-col gap-6">
+<!-- Reason Section -->
+<div class="bg-error-container/10 border border-error-container/30 rounded p-4 relative">
+<h4 class="font-caption text-label-caps uppercase text-on-surface-variant font-bold mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-danger">policy</span>
+                                Motif Détecté
+                            </h4>
+<p class="font-body-sm text-[14px] leading-relaxed text-on-background font-medium">
+                                3 dépôts de 450 000 FCFA en 2 jours sur des agences CLCAM différentes (Seuil contourné)
+                            </p>
+<div class="mt-3 inline-block bg-surface-header border border-border-default rounded px-2 py-1 text-caption font-caption text-on-surface-variant">
+                                Scénario: <span class="font-medium text-on-background">Smurfing / Structuration</span>
+</div>
+</div>
+<!-- Client Context -->
+<div>
+<h4 class="font-caption text-label-caps uppercase text-on-surface-variant font-bold mb-3 border-b border-border-default pb-1">Contexte Client</h4>
+<div class="grid grid-cols-2 gap-y-3 gap-x-4">
+<div>
+<span class="block text-[11px] text-on-surface-variant mb-0.5">Type de compte</span>
+<span class="font-body-sm text-body-sm font-medium">Particulier - Courant</span>
+</div>
+<div>
+<span class="block text-[11px] text-on-surface-variant mb-0.5">Ancienneté</span>
+<span class="font-body-sm text-body-sm font-medium">2 ans, 4 mois</span>
+</div>
+<div>
+<span class="block text-[11px] text-on-surface-variant mb-0.5">Revenu Mensuel Déclaré</span>
+<span class="font-body-sm text-body-sm font-medium">150 000 FCFA</span>
+</div>
+<div>
+<span class="block text-[11px] text-on-surface-variant mb-0.5">Profession</span>
+<span class="font-body-sm text-body-sm font-medium">Commerçant</span>
+</div>
+</div>
+<button class="mt-3 text-primary font-caption text-caption font-medium flex items-center gap-1 hover:underline">
+                                Voir la Fiche Client Complète <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+</button>
+</div>
+<!-- Graph/Visual Representation Placeholder -->
+<div>
+<h4 class="font-caption text-label-caps uppercase text-on-surface-variant font-bold mb-3 border-b border-border-default pb-1">Analyse Visuelle</h4>
+<div class="w-full h-32 bg-surface-container rounded border border-border-default flex items-center justify-center text-on-surface-variant relative overflow-hidden">
+<!-- Decorative background to simulate graph context -->
+<div class="absolute inset-0 bg-cover bg-center opacity-80" data-alt="A clean, highly minimalist corporate data visualization chart showing a timeline of three financial deposits across different days, styled with thin sharp lines in dark blue and red accents, against a pure white background. Institutional UI aesthetic, highly precise." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDmMsvm0udTb0gn0wV26bkwoGUzW_DngLwDeZj6kea69Br8-UNUTU9-jIZdm3xhUo4RhdHefFCED3LaNL-7A0NdufMCv-hjwk9S9xvwaqD20i4qT-kCkI-KJU4Els2aFqJ_pTMC_cHN6fvS__Srkxw1a_wifebgYyFEA1YLXOpgmh_b7qAvQpkCjMFV30z4AL-ZNjmlfqG-108ZCaCMNQSiFRzWBns33JSgwojW8sXCVUUBdWc8puZ1')"></div>
+<span class="relative z-10 bg-surface-header/90 px-3 py-1 rounded text-caption border border-border-default backdrop-blur-sm shadow-sm">Graphe des transactions</span>
+</div>
+</div>
+</div>
+<!-- Action Area -->
+<div class="px-5 py-4 border-t border-border-default bg-surface-bright shrink-0 flex flex-col gap-3">
+<button class="w-full h-[40px] bg-primary text-on-primary rounded font-caption text-body-sm font-semibold hover:bg-primary/90 transition-colors shadow-sm flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">gavel</span>
+                            Générer DOS
+                        </button>
+<div class="flex gap-2">
+<button class="flex-1 h-[36px] bg-surface-header border border-border-default text-on-surface rounded font-caption text-caption font-medium hover:bg-surface-container transition-colors">
+                                Clôturer (Faux positif)
+                            </button>
+<button class="flex-1 h-[36px] bg-surface-header border border-border-default text-on-surface rounded font-caption text-caption font-medium hover:bg-surface-container transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[16px]">smart_toy</span>
+                                Ouvrir Assistant
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

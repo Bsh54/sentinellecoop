@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SentinelleCoop - Tableau de bord</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-background": "#0d1c2f",
+                      "status-offline": "#64748B",
+                      "inverse-on-surface": "#ebf1ff",
+                      "on-secondary": "#ffffff",
+                      "primary": "#091426",
+                      "secondary-container": "#e0e3e5",
+                      "surface-container": "#e6eeff",
+                      "on-tertiary-fixed-variant": "#564427",
+                      "surface-dim": "#ccdbf4",
+                      "background": "#f8f9ff",
+                      "inverse-primary": "#bcc7de",
+                      "secondary-fixed": "#e0e3e5",
+                      "outline-variant": "#c5c6cd",
+                      "on-tertiary-fixed": "#271902",
+                      "error-container": "#ffdad6",
+                      "surface-tint": "#545f73",
+                      "warning": "#D97706",
+                      "on-primary-fixed": "#111c2d",
+                      "inverse-surface": "#233144",
+                      "surface-container-high": "#dde9ff",
+                      "on-error": "#ffffff",
+                      "surface-bright": "#f8f9ff",
+                      "secondary-fixed-dim": "#c4c7c9",
+                      "on-secondary-fixed": "#191c1e",
+                      "surface-container-highest": "#d5e3fd",
+                      "on-tertiary-container": "#a38c6a",
+                      "on-secondary-fixed-variant": "#444749",
+                      "on-primary-container": "#8590a6",
+                      "primary-fixed-dim": "#bcc7de",
+                      "on-surface": "#0d1c2f",
+                      "surface": "#f8f9ff",
+                      "on-error-container": "#93000a",
+                      "on-primary": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "border-default": "#E2E8F0",
+                      "primary-fixed": "#d8e3fb",
+                      "primary-container": "#1e293b",
+                      "danger": "#DC2626",
+                      "success": "#059669",
+                      "on-secondary-container": "#626567",
+                      "outline": "#75777d",
+                      "error": "#ba1a1a",
+                      "secondary": "#5c5f61",
+                      "surface-header": "#FFFFFF",
+                      "on-primary-fixed-variant": "#3c475a",
+                      "tertiary": "#1e1200",
+                      "tertiary-fixed": "#fadfb8",
+                      "tertiary-container": "#35260c",
+                      "tertiary-fixed-dim": "#ddc39d",
+                      "on-surface-variant": "#45474c",
+                      "surface-container-low": "#eff4ff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-variant": "#d5e3fd"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "header-height": "56px",
+                      "gutter": "16px",
+                      "sidebar-width": "260px",
+                      "cell-padding-h": "12px",
+                      "container-gap": "24px",
+                      "cell-padding-v": "8px"
+              },
+              "fontFamily": {
+                      "body-sm": ["Inter"],
+                      "data-table": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "label-caps": ["Inter"],
+                      "display": ["Inter"],
+                      "caption": ["Inter"]
+              },
+              "fontSize": {
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "data-table": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                      "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "label-caps": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "display": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "caption": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background font-body-sm antialiased h-screen flex overflow-hidden">
+<!-- SideNavBar -->
+<nav class="bg-primary dark:bg-primary fixed left-0 top-0 h-screen w-[260px] border-r border-outline-variant flex flex-col h-full overflow-y-auto z-20">
+<div class="p-4 border-b border-outline-variant/20 flex flex-col items-center justify-center pt-6 pb-6">
+<div class="w-16 h-16 rounded-full bg-surface-container-high mb-3 flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-3xl text-primary" data-icon="shield_person" data-weight="fill" style="font-variation-settings: 'FILL' 1;">shield_person</span>
+</div>
+<h1 class="font-headline-md text-headline-md font-bold text-on-primary dark:text-on-primary text-center">SentinelleCoop</h1>
+<p class="font-caption text-caption text-primary-fixed-dim text-center opacity-80 mt-1">Portail Compliance</p>
+</div>
+<div class="flex-1 py-4">
+<ul class="space-y-1 px-3">
+<li>
+<a class="bg-primary-container text-on-primary-container font-semibold flex items-center gap-3 px-4 py-2.5 rounded transition-colors duration-200 cursor-pointer active:opacity-90" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-body-sm text-body-sm">Tableau de bord</span>
+</a>
+</li>
+<li>
+<a class="text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant transition-colors duration-200 flex items-center gap-3 px-4 py-2.5 rounded cursor-pointer active:opacity-90" href="#">
+<span class="material-symbols-outlined" data-icon="filter_alt">filter_alt</span>
+<span class="font-body-sm text-body-sm">Filtrage</span>
+</a>
+</li>
+<li>
+<a class="text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant transition-colors duration-200 flex items-center gap-3 px-4 py-2.5 rounded cursor-pointer active:opacity-90" href="#">
+<span class="material-symbols-outlined" data-icon="person_search">person_search</span>
+<span class="font-body-sm text-body-sm">Fiche Client</span>
+</a>
+</li>
+<li>
+<a class="text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant transition-colors duration-200 flex items-center gap-3 px-4 py-2.5 rounded cursor-pointer active:opacity-90 flex justify-between" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+<span class="font-body-sm text-body-sm">Alertes</span>
+</div>
+<span class="bg-danger text-on-error font-caption text-[10px] px-1.5 py-0.5 rounded-full">12</span>
+</a>
+</li>
+<li>
+<a class="text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant transition-colors duration-200 flex items-center gap-3 px-4 py-2.5 rounded cursor-pointer active:opacity-90" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="font-body-sm text-body-sm">Gestion des listes</span>
+</a>
+</li>
+<li>
+<a class="text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant transition-colors duration-200 flex items-center gap-3 px-4 py-2.5 rounded cursor-pointer active:opacity-90" href="#">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+<span class="font-body-sm text-body-sm">Synchronisation</span>
+</a>
+</li>
+<li>
+<a class="text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant transition-colors duration-200 flex items-center gap-3 px-4 py-2.5 rounded cursor-pointer active:opacity-90" href="#">
+<span class="material-symbols-outlined" data-icon="history_edu">history_edu</span>
+<span class="font-body-sm text-body-sm">Journal d'audit</span>
+</a>
+</li>
+</ul>
+</div>
+<div class="p-4 border-t border-outline-variant/20">
+<ul class="space-y-1">
+<li>
+<a class="text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant transition-colors duration-200 flex items-center gap-3 px-4 py-2.5 rounded cursor-pointer active:opacity-90" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-body-sm text-body-sm">Paramètres</span>
+</a>
+</li>
+<li>
+<a class="text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant transition-colors duration-200 flex items-center gap-3 px-4 py-2.5 rounded cursor-pointer active:opacity-90 text-error" href="#">
+<span class="material-symbols-outlined" data-icon="logout">logout</span>
+<span class="font-body-sm text-body-sm">Déconnexion</span>
+</a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content Wrapper -->
+<div class="flex-1 ml-[260px] flex flex-col h-full bg-background overflow-hidden">
+<!-- TopNavBar -->
+<header class="bg-surface-header dark:bg-on-background fixed top-0 right-0 h-[56px] w-[calc(100%-260px)] border-b border-outline-variant flex justify-between items-center px-gutter w-full ml-[260px] z-10">
+<div class="flex items-center gap-4">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline" data-icon="search">search</span>
+<input class="pl-10 pr-4 py-1.5 bg-surface rounded border-border-default text-body-sm w-80 focus:border-primary focus:ring-0 transition-colors" placeholder="Rechercher un membre (N° CLCAM, Nom)..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-4 flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-container rounded-full border border-outline-variant/50">
+<span class="w-2 h-2 rounded-full bg-warning animate-pulse"></span>
+<span class="font-caption text-caption text-on-surface-variant">Mode hors-ligne actif</span>
+</div>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container rounded transition-colors duration-200 relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-danger rounded-full border border-surface-header"></span>
+</button>
+<div class="w-8 h-8 rounded bg-primary text-on-primary flex items-center justify-center font-bold text-sm cursor-pointer hover:opacity-90">
+                    AC
+                </div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="flex-1 overflow-y-auto mt-[56px] p-container-gap">
+<div class="max-w-7xl mx-auto space-y-6">
+<!-- Header Section -->
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-display text-display text-on-background">Tableau de bord</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Vue globale de la conformité CLCAM</p>
+</div>
+</div>
+<!-- KPI Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+<div class="bg-surface-header border border-border-default rounded-lg p-5 flex flex-col justify-between relative overflow-hidden">
+<div class="absolute -right-4 -top-4 w-24 h-24 bg-danger/5 rounded-full"></div>
+<div class="flex justify-between items-start">
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">Alertes ouvertes</span>
+<span class="material-symbols-outlined text-danger bg-error-container p-1.5 rounded" data-icon="warning">warning</span>
+</div>
+<div class="mt-4">
+<span class="text-3xl font-bold text-on-background">12</span>
+<div class="flex items-center gap-1 mt-1 text-danger font-caption text-caption">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span>
+<span>+2 depuis hier</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-header border border-border-default rounded-lg p-5 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">Clients à vérifier</span>
+<span class="material-symbols-outlined text-warning bg-tertiary-fixed p-1.5 rounded" data-icon="person_search">person_search</span>
+</div>
+<div class="mt-4">
+<span class="text-3xl font-bold text-on-background">5</span>
+<div class="flex items-center gap-1 mt-1 text-on-surface-variant font-caption text-caption">
+<span>Priorité haute</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-header border border-border-default rounded-lg p-5 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">DOS en attente</span>
+<span class="material-symbols-outlined text-primary bg-primary-fixed p-1.5 rounded" data-icon="assignment_late">assignment_late</span>
+</div>
+<div class="mt-4">
+<span class="text-3xl font-bold text-on-background">3</span>
+<div class="flex items-center gap-1 mt-1 text-on-surface-variant font-caption text-caption">
+<span>Déclarations d'Opérations Suspectes</span>
+</div>
+</div>
+</div>
+<div class="bg-surface-header border border-border-default rounded-lg p-5 flex flex-col justify-between bg-surface-container-low">
+<div class="flex justify-between items-start">
+<span class="font-body-sm text-body-sm text-on-surface-variant font-medium">État des listes</span>
+<span class="material-symbols-outlined text-success bg-success/10 p-1.5 rounded" data-icon="fact_check">fact_check</span>
+</div>
+<div class="mt-4">
+<span class="text-lg font-bold text-on-background">Mise à jour OK</span>
+<div class="flex items-center gap-1 mt-1 text-on-surface-variant font-caption text-caption">
+<span class="material-symbols-outlined text-[14px]" data-icon="update">update</span>
+<span>Dernière maj: 24/05/2024</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Main Grid Area -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Table Content -->
+<div class="lg:col-span-8 bg-surface-header border border-border-default rounded-lg overflow-hidden flex flex-col">
+<div class="px-5 py-4 border-b border-border-default flex justify-between items-center bg-surface-header">
+<h3 class="font-headline-md text-headline-md text-on-background">Dernières alertes</h3>
+<button class="font-caption text-caption text-primary hover:underline font-medium">Voir tout</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface text-on-surface-variant font-label-caps text-label-caps uppercase border-b border-border-default">
+<tr>
+<th class="px-cell-padding-h py-cell-padding-v font-semibold">Date</th>
+<th class="px-cell-padding-h py-cell-padding-v font-semibold">Membre (CLCAM)</th>
+<th class="px-cell-padding-h py-cell-padding-v font-semibold">Type</th>
+<th class="px-cell-padding-h py-cell-padding-v font-semibold">Gravité</th>
+<th class="px-cell-padding-h py-cell-padding-v font-semibold">Statut</th>
+<th class="px-cell-padding-h py-cell-padding-v font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="font-data-table text-data-table text-on-background divide-y divide-border-default">
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-cell-padding-h py-2 whitespace-nowrap">24/05 09:12</td>
+<td class="px-cell-padding-h py-2 whitespace-nowrap font-medium">Jean Dupont (C-102)</td>
+<td class="px-cell-padding-h py-2 whitespace-nowrap text-on-surface-variant">PPE</td>
+<td class="px-cell-padding-h py-2 whitespace-nowrap">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-error-container text-on-error-container uppercase">Haute</span>
+</td>
+<td class="px-cell-padding-h py-2 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 text-danger font-medium"><span class="w-1.5 h-1.5 rounded-full bg-danger"></span>Ouvert</span>
+</td>
+<td class="px-cell-padding-h py-2 whitespace-nowrap text-right">
+<button class="p-1 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container"><span class="material-symbols-outlined text-[18px]" data-icon="visibility">visibility</span></button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors bg-surface-bright">
+<td class="px-cell-padding-h py-2 whitespace-nowrap">23/05 15:45</td>
+<td class="px-cell-padding-h py-2 whitespace-nowrap font-medium">SARL Immob (C-405)</td>
+<td class="px-cell-padding-h py-2 whitespace-nowrap text-on-surface-variant">Sanction</td>
+<td class="px-cell-padding-h py-2 whitespace-nowrap">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-error-container text-on-error-container uppercase">Haute</span>
+</td>
+<td class="px-cell-padding-h py-2 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 text-danger font-medium"><span class="w-1.5 h-1.5 rounded-full bg-danger"></span>Ouvert</span>
+</td>
+<td class="px-cell-padding-h py-2 whitespace-nowrap text-right">
+<button class="p-1 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container"><span class="material-symbols-outlined text-[18px]" data-icon="visibility">visibility</span></button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="px-cell-padding-h py-2 whitespace-nowrap">23/05 11:20</td>
+<td class="px-cell-padding-h py-2 whitespace-nowrap font-medium">Marie Claire (C-882)</td>
+<td class="px-cell-padding-h py-2 whitespace-nowrap text-on-surface-variant">Homonymie</td>
+<td class="px-cell-padding-h py-2 whitespace-nowrap">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-tertiary-fixed text-on-tertiary-fixed uppercase">Moyenne</span>
+</td>
+<td class="px-cell-padding-h py-2 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 text-warning font-medium"><span class="w-1.5 h-1.5 rounded-full bg-warning"></span>En cours</span>
+</td>
+<td class="px-cell-padding-h py-2 whitespace-nowrap text-right">
+<button class="p-1 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container"><span class="material-symbols-outlined text-[18px]" data-icon="visibility">visibility</span></button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors bg-surface-bright">
+<td class="px-cell-padding-h py-2 whitespace-nowrap">22/05 08:05</td>
+<td class="px-cell-padding-h py-2 whitespace-nowrap font-medium">Bamba Ali (C-119)</td>
+<td class="px-cell-padding-h py-2 whitespace-nowrap text-on-surface-variant">Média Négatif</td>
+<td class="px-cell-padding-h py-2 whitespace-nowrap">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-[10px] font-bold bg-surface-container-highest text-on-surface-variant uppercase">Faible</span>
+</td>
+<td class="px-cell-padding-h py-2 whitespace-nowrap">
+<span class="inline-flex items-center gap-1 text-success font-medium"><span class="w-1.5 h-1.5 rounded-full bg-success"></span>Résolu</span>
+</td>
+<td class="px-cell-padding-h py-2 whitespace-nowrap text-right">
+<button class="p-1 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container"><span class="material-symbols-outlined text-[18px]" data-icon="visibility">visibility</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Right Sidebar Panel -->
+<div class="lg:col-span-4 space-y-6">
+<!-- Actions Rapides -->
+<div class="bg-surface-header border border-border-default rounded-lg p-5">
+<h3 class="font-headline-md text-headline-md text-on-background mb-4">Actions rapides</h3>
+<div class="space-y-3">
+<button class="w-full flex items-center justify-center gap-2 bg-primary text-on-primary py-2.5 px-4 rounded font-body-sm font-medium hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-[20px]" data-icon="search">search</span>
+                                    Nouveau filtrage
+                                </button>
+<button class="w-full flex items-center justify-center gap-2 bg-surface text-on-background border border-border-default py-2.5 px-4 rounded font-body-sm font-medium hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="upload_file">upload_file</span>
+                                    Importer données
+                                </button>
+<button class="w-full flex items-center justify-center gap-2 bg-surface text-on-background border border-border-default py-2.5 px-4 rounded font-body-sm font-medium hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="update">update</span>
+                                    Mettre à jour les listes
+                                </button>
+</div>
+</div>
+<!-- Sync Status -->
+<div class="bg-surface-header border border-warning/30 rounded-lg p-5 relative overflow-hidden">
+<div class="absolute top-0 left-0 w-1 h-full bg-warning"></div>
+<h3 class="font-headline-md text-headline-md text-on-background mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-warning" data-icon="sync_problem">sync_problem</span>
+                                État du système
+                            </h3>
+<div class="bg-tertiary-fixed/30 p-3 rounded border border-warning/20">
+<p class="font-body-sm text-body-sm font-medium text-warning">Statut Synchronisation: Non synchronisé</p>
+<p class="font-caption text-caption text-on-surface-variant mt-1">Le système fonctionne en mode hors-ligne. Les dernières modifications ne sont pas transmises au serveur central.</p>
+</div>
+<button class="mt-4 text-primary font-caption text-caption font-semibold flex items-center gap-1 hover:underline">
+                                Lancer la synchronisation
+                                <span class="material-symbols-outlined text-[16px]" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

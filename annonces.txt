@@ -1,0 +1,209 @@
+Voici le texte intégral du fichier PDF, tel qu'il y figure :
+
+---
+
+**APPEL A CANDIDATURES**
+Burkina Faso – Togo – Bénin – Sénégal – Mali
+Septembre – Octobre 2026
+
+**TERMES DE REFERENCE**
+**HACKATHONS NATIONAUX D'INNOVATION**
+**CIF – PROJET DIGICOOP-WA+**
+**Thématiques : Filtrage Clients – LBC/FT/FP | Scoring Microcrédit**
+
+© Juillet 2026
+
+---
+
+Dans un contexte marqué par l'accélération de la transformation digitale et la recherche de solutions technologiques adaptées aux défis socio-économiques de l'espace UEMOA, la Confédération des Institutions Financières d'Afrique de l'Ouest (CIF) lance, dans le cadre du programme régional DigiCoop-WA+, une série de Hackathons Nationaux d'Innovation couvrant cinq (5) pays : le Burkina Faso, le Togo, le Bénin, le Sénégal et le Mali.
+
+Ces hackathons constituent un mécanisme d'innovation ouverte visant à mobiliser le génie créatif des jeunes talents (développeurs, data scientists, designers, entrepreneurs) pour concevoir des solutions numériques innovantes répondant aux besoins concrets des Coopératives financières (Institutions de Microfinances) membres de la CIF.
+
+Organisés en présentiel dans chaque pays entre septembre et octobre 2026, ces événements alimenteront un Hackathon Régional CIF prévu le 23 octobre 2026, qui réunira les meilleures équipes lauréates des cinq éditions nationales.
+
+Les hackathons nationaux visent à :
+- stimuler l'innovation endogène au service des institutions financières membres ;
+- favoriser l'émergence de solutions technologiques adaptées aux besoins opérationnels réels des Institutions de Microfinance ;
+- renforcer les écosystèmes numériques nationaux ;
+- contribuer activement à la modernisation et à la sécurisation des processus financiers de la sous-région.
+
+## OBJECTIFS
+
+## Objectif général
+
+Promouvoir l'innovation technologique en mobilisant les jeunes talents de l'Afrique de l'Ouest afin de concevoir, prototype et valoriser des solutions numériques innovantes répondant aux besoins opérationnels des Coopératives financières membres de la CIF.
+
+## Objectifs spécifiques
+
+- Identifier et accompagner des projets technologiques innovants à fort impact pour le secteur financier ;
+- Renforcer les capacités techniques, entrepreneuriales et collaboratives des participant(e)s ;
+- Encourager la création de startups technologiques locales à vocation régionale ;
+- Faciliter la mise en relation entre porteurs de solutions, institutions financières, partenaires techniques et investisseurs ;
+- Valoriser l'expertise numérique des jeunes des cinq pays cibles.
+
+## CALENDRIER DES HACKATHONS NATIONAUX
+
+Les cinq hackathons nationaux se déroulent selon le calendrier suivant :
+
+| Pays | Ville | Dates |
+|------|-------|-------|
+| Burkina Faso | Ouagadougou | 4 - 6 sept. 2026 |
+| Togo | Lomé | 11 - 13 sept. 2026 |
+| Bénin | Cotonou | 18 - 20 sept. 2026 |
+| Sénégal | Dakar | 25 - 27 sept. 2026 |
+| Mali | Bamako | 2 - 4 oct. 2026 |
+| Hackathon Régional | Ouagadougou | fin oct. 2026 |
+
+Le Grand Lauréat (1er Prix) de chaque hackathon national se qualifie directement pour le Hackathon Régional CIF qui se tiendra avant la fin du mois d'octobre 2026 à Ouagadougou. Les frais de déplacement et d'hébergement sont pris en charge par la CIF.
+
+---
+
+## THEMATIQUES DES CHALLENGES
+
+Deux défis prioritaires, définis par la CIF en lien direct avec les enjeux opérationnels de son réseau d'institutions financières, sont soumis aux équipes participantes dans les cinq pays. Ces thématiques sont identiques pour tous les hackathons nationaux :
+
+### • Thématique 01 — Filtrage des clients — LBC/FT/FP
+
+**Conformité LBC/FT/FP en matière de système d’information**
+
+Problématique : Les Coopératives financières sont soumises aux obligations de Lutte contre le Blanchiment de Capitaux, le Financement du Terrorisme et la prolifération des armes de destruction massive (LBC/FT/FP), notamment le filtrage des clients y compris les Personnes Politiquement Exposées (PPE) et l'identification des opérations suspectes. Le défi consiste à concevoir une solution numérique permettant le profilage des clients et des comptes ouverts dans les livres de l'institution, le filtrage en temps réel des clients et des transactions, le suivi des mouvements sur les comptes et la génération automatique des alertes qui peuvent être d'ordre bloquant ou informatif, la détermination du solde global de l'ensemble des comptes détenus par un même client, le recensement des opérations effectuées par un même client occasionnel ou habituel, l'identification des opérations à caractère suspect ou inhabituel, adaptée aux contraintes des Coopératives financières (connectivité limitée, volumes modestes, faibles ressources informatiques). L'application mise en place doit également assurer que les modifications relatives à la mise en œuvre des sanctions ciblées sont prises en compte sans délai.
+
+### • Thématique 02 — Scoring Microcrédit
+
+**Automatisation de l'évaluation du risque pour l'octroi de crédits**
+
+Problématique : L'octroi de microcrédits dans les Coopératives financières repose encore largement sur des analyses manuelles, subjectives et longues, générant des délais de traitement élevés, des risques d'impayés et des coûts opérationnels importants. Le défi consiste à concevoir un système de scoring automatisé et adapté au contexte des Coopérative financières d'Afrique de l'Ouest, permettant d'évaluer rapidement et objectivement le profil de risque d'un demandeur de crédit, à partir de données disponibles localement.
+
+## PROFILS CIBLES ET CONDITIONS DE PARTICIPATION
+
+## Profils cibles
+
+L'appel est ouvert à toute personne remplissant les conditions ci-dessous, résidant dans l'un des cinq pays concernés :
+
+• Étudiants en TIC, ingénierie, mathématiques, data science et disciplines connexes ;
+• Développeurs, architectes logiciels, ingénieurs en intelligence artificielle et data engineers ;
+• Designers UX/UI et professionnels de l'expérience utilisateur ;
+• Entrepreneurs numériques et startups en phase d'idéation ou de développement ;
+• Jeunes professionnels du numérique souhaitant mettre leurs compétences au service de la finance inclusive.
+
+## Conditions générales de participation
+
+• Équipes composées de 3 à 5 membres ;
+• Résidence obligatoire dans le pays du hackathon auquel vous candidatez ;
+• Participation entièrement gratuite, sur dossier de sélection ;
+• Une seule solution par équipe ;
+• Une seule thématique par équipe (Thématique 01 ou Thématique 02) ;
+• Présence obligatoire sur les 3 jours de l'événement (08h00 – 20h00) ;
+• La mixité des compétences est fortement recommandée (profils tech + business) ;
+• Une équipe ne peut candidater qu'à un seul hackathon national.
+
+---
+
+## COMPOSITION DU DOSSIER DE CANDIDATURE
+
+Le dossier de candidature est identique pour tous les pays. Il doit comprendre :
+- Fiche de présentation de l'équipe (noms, prénoms, contacts, spécialités et rôles de chaque membre) ;
+- Note de présentation de l'idée/solution envisagée (2 à 5 pages maximum) : problème adressé, approche proposée, valeur ajoutée attendue ;
+- Indication de la thématique choisie (Thématique 01 ou Thématique 02) ;
+- Mention du pays/ville de participation ;
+- CV ou profil synthétique de chaque membre de l'équipe ;
+- Copie d'une pièce d'identité du chef d'équipe ;
+- Tout autre document jugé pertinent (portfolio, prototype existant, etc.).
+
+## Critères de sélection
+
+Les dossiers seront évalués selon les critères suivants :
+
+| Critère | Note |
+|---------|------|
+| Pertinence et adéquation de la solution à la thématique | 30% |
+| Originalité et caractère innovant de l'approche | 20% |
+| Faisabilité technique et réalisme du plan de développement | 20% |
+| Impact potentiel pour les Coopératives financières membres de la CIF | 15% |
+| Complémentarité et équilibre des compétences au sein de l'équipe | 15% |
+
+## DEROULEMENT DES EVENEMENTS
+
+Chaque hackathon national se déroule en un seul événement intensif de 3 jours dans la ville concernée, de 08h00 à 20h00. La participation est entièrement gratuite pour les candidat(e)s sélectionné(e)s.
+
+L'organisation prend en charge pour chaque hackathon national :
+• Restauration complète pendant les 3 jours (repas, collations et boissons) ;
+• Accès à un espace de travail équipé (prises, rallonges électriques, Wi-Fi haut débit) ;
+• Matériel de travail (papeterie, post-it, tableaux blancs) ;
+• Environnement de développement et de test (infrastructure, composants et DevOps) ;
+• Encadrement par des mentors : experts CIF, fintech, conformité, IA et UX ;
+• Attestation officielle de participation délivrée à tous/toutes les participant(e)s ;
+• Opportunités de networking avec des investisseurs, IMF et institutions membres de la CIF.
+
+## METHODOLOGIE
+
+Le processus de sélection et d'animation des hackathons suit une méthodologie structurée et identique dans les cinq pays :
+• Sélection sur dossier (critères : idée, innovation, impact, faisabilité technique) ;
+• Organisation des hackathons en présentiel dans chaque capitale ;
+• Coaching technique et business assuré par des mentors spécialistes ;
+• Développement de prototypes fonctionnels testables en 72 heures ;
+• Pitch final devant un jury de professionnels et d'experts sectoriels ;
+• Sélection et annonce officielle des lauréat(e)s ;
+• Qualification du Grand Lauréat pour le Hackathon Régional CIF ;
+• Accompagnement post-hackathon.
+
+---
+
+## PRIX ET AVANTAGES
+
+Un jury de professionnels et d'experts sectoriels évaluera les projets de chaque hackathon national sur la base de l'impact pour les institutions financières, de l'innovation, de la faisabilité technique et du modèle économique. Les prix sont identiques pour les cinq hackathons nationaux. Un grand prix régional est prévu à l'issu de ma phase finale régionale qui se tiendra à Ouagadougou.
+
+**1er Prix : Grand Lauréat Pays**
+- Dotation : 1 500 000 FCFA
+- Avantages complémentaires :
+  - Qualification directe au Hackathon Régional CIF (frais de déplacement et d'hébergement pris en charge par la CIF et +4 000 000 FCFA à gagner) ;
+  - Mentoring technique de 4 semaines avant le hackathon régional (préparation intensive) ;
+  - Intégration au Catalogue des Innovations DigiCoop-WA+ ;
+  - Certificat officiel CIF de solution labellisée.
+
+**1er Prix : Grand Lauréat Régional**
+- Dotation : 4 000 000 FCFA*
+- Avantages complémentaires :
+  - Déploiement pilote de la solution au sein d'un réseau membres de la CIF dans le cadre du programme DigiCoop-WA+ ;
+  - Intégration prioritaire au Catalogue des Innovations DigiCoop-WA+ et présentation lors d'un événement institutionnel de la CIF ;
+  - Couverture médiatique régionale (communiqués, réseaux sociaux et publications institutionnelles de la CIF) ;
+  - Certificat officiel de Grand Lauréat régional CIF DigiCoop-WA+.
+
+## RESULTATS ATTENDUS
+
+À l'issue des cinq hackathons nationaux, les résultats attendus sont :
+• 05 équipes sélectionnées et accompagnées (01 par pays) ;
+• 05 Grand Lauréats qualifiés pour le Hackathon Régional CIF ;
+• Des solutions concrètes répondant aux défis des institutions financières de la sous-région ;
+• Une capitalisation régionale des résultats pour une implémentation dans les sites pilotes et une éventuelle généralisation.
+
+## DISPOSITIONS FINALES
+
+Sur le plan de la propriété intellectuelle, la CIF est seule et exclusive propriétaire des solutions et prototypes développés dans le cadre du Hackathon. La participation au Hackathon CIF implique l'acceptation intégrale des présentes dispositions : dès leur validation en tant que lauréates, les startups cèdent à titre exclusif et définitif à la CIF, qui l'accepte, l'intégralité des droits de propriété intellectuelle attachés aux solutions développées dans le cadre du déploiement pilote, en ce compris les droits d'utilisation, d'expérimentation, de modification et de valorisation commerciale. Les équipes participantes ne conservent aucun droit d'exploitation autonome ni de revendication ultérieure de propriété sur les travaux ainsi cédés.
+
+Les modalités de cette cession sont précisées dans une charte spécifique du Hackathon CIF, qui s'impose à toute startup lauréate.
+
+La CIF peut modifier, reporter ou annuler l'un ou plusieurs événements en cas de contrainte majeure, sans obligation d'indemnisation.
+
+---
+
+## INFORMATIONS SPECIFIQUES ET MODALITES DE SOUMISSION
+
+Les depots de dossier sont faits a l'adresse suivant : digicoop-wa@cif-ao.org .
+
+Pour toute question relative à l'appel à candidatures ou à l'organisation de l'événement :
+
+| Organisateur | Confédération des Institutions Financières d'Afrique de l'Ouest (CIF) PROJET DIGICOOP-WA+ |
+|--------------|-------------------------------------------------------------------------------------------|
+| E-mail | digicoop-wa@cif-ao.org |
+| Site web | https://www.cif-ao.org |
+| Téléphone | +226 25 37 64 60 / +226 25 37 60 58 / +226 25 37 65 55 |
+| Réseaux sociaux | #HackathonCIF2026 (LinkedIn, Facebook, WhatsApp) |
+
+Les demandes de clarification concernant les TDR sont recevables à cette adresse digicoop-wa@cif-ao.org au plus tard le 09 août 2026. Une réponse aux différentes requêtes sera diffusée sur le site web de la CIF au plus tard le 12 août 2026.
+
+Les dossiers de candidature doivent être soumis exclusivement par voie électronique avant la date de clôture des inscriptions le 23 août 2026 à 23h59 (GMT+0).
+
+Tout dossier incomplet ou déposé après la date limite ne sera pas pris en considération. La CIF se réserve le droit de ne pas donner suite à l'appel à candidatures sans obligation de s'en justifier.
+
+Ouagadougou, le 24 juillet 2026

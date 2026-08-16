@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html class="light" lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SentinelleCoop — Synchronisation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="app.js"></script>
+<style>body{font-family:'Inter',sans-serif;}</style>
+</head>
+<body class="bg-background text-on-background font-body-sm antialiased h-screen flex overflow-hidden">
+<nav id="sidebar"></nav>
+<div class="flex-1 ml-[260px] flex flex-col h-full overflow-hidden">
+<header id="topbar"></header>
+<main class="flex-1 overflow-y-auto mt-[56px] p-container-gap">
+<div class="max-w-5xl mx-auto space-y-6">
+  <div><h2 class="font-display text-display">Synchronisation inter-caisses</h2><p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Partage d'empreintes chiffrées (hash) entre caisses, sans exposer les données personnelles (conforme APDP).</p></div>
+
+  <!-- Statut -->
+  <div class="bg-surface-header border border-warning/30 rounded-lg p-5 relative overflow-hidden">
+    <div class="absolute top-0 left-0 w-1 h-full bg-warning"></div>
+    <div class="flex items-center justify-between flex-wrap gap-3">
+      <div class="flex items-center gap-3"><span class="material-symbols-outlined text-warning text-3xl">sync_problem</span>
+        <div><p class="text-body-sm font-semibold text-warning">Non synchronisé</p><p class="font-caption text-caption text-on-surface-variant">Dernière synchronisation : 21/05/2024 · 14 alertes locales non partagées</p></div></div>
+      <span class="flex items-center gap-2 px-3 py-1 bg-surface-container rounded-full border border-outline-variant/50"><span class="w-2 h-2 rounded-full bg-warning animate-pulse"></span><span class="font-caption text-caption text-on-surface-variant">Mode hors-ligne actif</span></span>
+    </div>
+  </div>
+
+  <!-- 2 méthodes -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div class="bg-surface-header border border-border-default rounded-lg p-6 flex flex-col">
+      <div class="flex items-center gap-2 mb-2"><span class="material-symbols-outlined text-primary">usb</span><h3 class="font-headline-md text-headline-md">Exporter (clé USB / fichier)</h3></div>
+      <p class="font-caption text-caption text-on-surface-variant mb-4 flex-1">Génère un fichier chiffré contenant uniquement les empreintes des identités et les alertes, pour transport physique vers une autre caisse.</p>
+      <button class="h-10 bg-primary text-on-primary rounded font-body-sm font-medium flex items-center justify-center gap-2 hover:opacity-90"><span class="material-symbols-outlined text-[20px]">download</span> Générer le fichier chiffré</button>
+    </div>
+    <div class="bg-surface-header border border-border-default rounded-lg p-6 flex flex-col">
+      <div class="flex items-center gap-2 mb-2"><span class="material-symbols-outlined text-primary">upload</span><h3 class="font-headline-md text-headline-md">Importer un fichier reçu</h3></div>
+      <p class="font-caption text-caption text-on-surface-variant mb-4 flex-1">Intègre les empreintes reçues d'une autre caisse pour repérer les doublons inter-caisses. Aucune donnée personnelle en clair n'est échangée.</p>
+      <button class="h-10 bg-surface border border-border-default rounded font-body-sm font-medium flex items-center justify-center gap-2 hover:bg-surface-container-low"><span class="material-symbols-outlined text-[20px]">folder_open</span> Sélectionner un fichier</button>
+    </div>
+  </div>
+
+  <!-- Journal des synchros -->
+  <div class="bg-surface-header border border-border-default rounded-lg overflow-hidden">
+    <div class="px-5 py-3 border-b border-border-default"><h3 class="font-headline-md text-headline-md">Historique des synchronisations</h3></div>
+    <table class="w-full text-left border-collapse">
+      <thead class="bg-surface font-label-caps text-label-caps uppercase text-on-surface-variant border-b border-border-default">
+        <tr><th class="px-cell-padding-h py-cell-padding-v font-semibold">Date</th><th class="px-cell-padding-h py-cell-padding-v font-semibold">Sens</th><th class="px-cell-padding-h py-cell-padding-v font-semibold">Caisse</th><th class="px-cell-padding-h py-cell-padding-v font-semibold">Méthode</th><th class="px-cell-padding-h py-cell-padding-v font-semibold text-right">Empreintes</th></tr></thead>
+      <tbody class="font-data-table text-data-table divide-y divide-border-default">
+        <tr class="hover:bg-surface-container-low"><td class="px-cell-padding-h py-2.5">21/05 14:02</td><td class="px-cell-padding-h py-2.5 text-on-surface-variant">Import</td><td class="px-cell-padding-h py-2.5">CLCAM Tchaourou</td><td class="px-cell-padding-h py-2.5">Clé USB</td><td class="px-cell-padding-h py-2.5 text-right">1 340</td></tr>
+        <tr class="hover:bg-surface-container-low"><td class="px-cell-padding-h py-2.5">19/05 09:30</td><td class="px-cell-padding-h py-2.5 text-on-surface-variant">Export</td><td class="px-cell-padding-h py-2.5">CLCAM N'Dali</td><td class="px-cell-padding-h py-2.5">Fichier chiffré</td><td class="px-cell-padding-h py-2.5 text-right">1 288</td></tr>
+        <tr class="hover:bg-surface-container-low"><td class="px-cell-padding-h py-2.5">15/05 16:11</td><td class="px-cell-padding-h py-2.5 text-on-surface-variant">Import</td><td class="px-cell-padding-h py-2.5">Central FECECAM</td><td class="px-cell-padding-h py-2.5">Réseau local</td><td class="px-cell-padding-h py-2.5 text-right">2 950</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</main>
+</div>
+<script>renderChrome('sync','Synchronisation');</script>
+</body>
+</html>

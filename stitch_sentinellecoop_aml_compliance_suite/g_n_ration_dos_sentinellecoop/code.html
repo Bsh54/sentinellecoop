@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Génération de la DOS - SentinelleCoop</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-background": "#0d1c2f",
+                      "status-offline": "#64748B",
+                      "inverse-on-surface": "#ebf1ff",
+                      "on-secondary": "#ffffff",
+                      "primary": "#091426",
+                      "secondary-container": "#e0e3e5",
+                      "surface-container": "#e6eeff",
+                      "on-tertiary-fixed-variant": "#564427",
+                      "surface-dim": "#ccdbf4",
+                      "background": "#f8f9ff",
+                      "inverse-primary": "#bcc7de",
+                      "secondary-fixed": "#e0e3e5",
+                      "outline-variant": "#c5c6cd",
+                      "on-tertiary-fixed": "#271902",
+                      "error-container": "#ffdad6",
+                      "surface-tint": "#545f73",
+                      "warning": "#D97706",
+                      "on-primary-fixed": "#111c2d",
+                      "inverse-surface": "#233144",
+                      "surface-container-high": "#dde9ff",
+                      "on-error": "#ffffff",
+                      "surface-bright": "#f8f9ff",
+                      "secondary-fixed-dim": "#c4c7c9",
+                      "on-secondary-fixed": "#191c1e",
+                      "surface-container-highest": "#d5e3fd",
+                      "on-tertiary-container": "#a38c6a",
+                      "on-secondary-fixed-variant": "#444749",
+                      "on-primary-container": "#8590a6",
+                      "primary-fixed-dim": "#bcc7de",
+                      "on-surface": "#0d1c2f",
+                      "surface": "#f8f9ff",
+                      "on-error-container": "#93000a",
+                      "on-primary": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "border-default": "#E2E8F0",
+                      "primary-fixed": "#d8e3fb",
+                      "primary-container": "#1e293b",
+                      "danger": "#DC2626",
+                      "success": "#059669",
+                      "on-secondary-container": "#626567",
+                      "outline": "#75777d",
+                      "error": "#ba1a1a",
+                      "secondary": "#5c5f61",
+                      "surface-header": "#FFFFFF",
+                      "on-primary-fixed-variant": "#3c475a",
+                      "tertiary": "#1e1200",
+                      "tertiary-fixed": "#fadfb8",
+                      "tertiary-container": "#35260c",
+                      "tertiary-fixed-dim": "#ddc39d",
+                      "on-surface-variant": "#45474c",
+                      "surface-container-low": "#eff4ff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-variant": "#d5e3fd"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "header-height": "56px",
+                      "gutter": "16px",
+                      "sidebar-width": "260px",
+                      "cell-padding-h": "12px",
+                      "container-gap": "24px",
+                      "cell-padding-v": "8px"
+              },
+              "fontFamily": {
+                      "body-sm": ["Inter"],
+                      "data-table": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "label-caps": ["Inter"],
+                      "display": ["Inter"],
+                      "caption": ["Inter"]
+              },
+              "fontSize": {
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "data-table": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                      "headline-md": ["18px", {"lineHeight": "24px", "fontWeight": "600"}],
+                      "label-caps": ["11px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "display": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "caption": ["12px", {"lineHeight": "16px", "fontWeight": "500"}]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen">
+<!-- Top Navigation -->
+<header class="fixed top-0 right-0 h-header-height w-[calc(100%-260px)] bg-surface-header border-b border-border-default z-30 flex justify-between items-center px-gutter ml-[260px]">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-extrabold text-on-surface">SentinelleCoop</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex items-center border border-border-default rounded px-3 py-1.5 bg-surface-container-lowest">
+<span class="material-symbols-outlined text-outline text-[18px] mr-2">search</span>
+<input class="bg-transparent border-none p-0 focus:ring-0 text-body-sm font-body-sm text-on-surface placeholder:text-outline-variant w-48 outline-none" placeholder="Rechercher..." type="text"/>
+</div>
+<div class="flex items-center gap-2 border border-border-default rounded-full px-3 py-1 bg-surface-container-lowest">
+<span class="w-2 h-2 rounded-full bg-status-offline"></span>
+<span class="text-caption font-caption text-on-surface-variant">Mode hors-ligne actif</span>
+</div>
+<div class="flex gap-2">
+<button class="p-2 rounded hover:bg-surface-container text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">help_outline</span>
+</button>
+<button class="p-2 rounded hover:bg-surface-container text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">notifications</span>
+</button>
+</div>
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center text-on-primary font-caption text-caption overflow-hidden border border-border-default">
+<img alt="Profil de l'agent" class="w-full h-full object-cover" data-alt="A small, professional avatar image representing an agent's profile in a corporate software system. The image shows a neutral, stylized silhouette or a professional headshot against a clean, light gray background, fitting the institutional design language of the compliance portal." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBakwyZorSZKv_YG7acxgV3AZDomJ2tD40TJKLk_Zlx2WhkXvD87GnnZdKyZV2s0WOARdZJbc4ThnWCV3prYbLI7JP6ssWLQ-x5wpta-BKMezBHqvQL8MlAOMef71_xCyc-dXXGaJRgFR25VJXnql5XMShMZvH_HweXhjPViYW7_RPuPSkIzr1BoNutY3rjbU1eB6PdFTxVTE1gw_WTdewIHYHlIFFdCLjOAox6apVkUiNOT4_hJN1Y"/>
+</div>
+</div>
+</header>
+<!-- Side Navigation -->
+<aside class="fixed left-0 top-0 h-screen w-sidebar-width bg-primary border-r border-outline-variant z-40 flex flex-col overflow-y-auto">
+<div class="p-gutter border-b border-on-primary-fixed-variant mb-4">
+<h1 class="font-headline-md text-headline-md font-bold text-on-primary">SentinelleCoop</h1>
+<p class="font-caption text-caption text-on-primary-container mt-1">Portail Compliance</p>
+</div>
+<nav class="flex-1 px-3 space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant transition-colors duration-200 font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Tableau de bord
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded bg-primary-container text-on-primary-container font-semibold transition-colors duration-200 font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined">filter_alt</span>
+                Filtrage
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant transition-colors duration-200 font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined">person_search</span>
+                Fiche Client
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant transition-colors duration-200 font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined">notifications_active</span>
+                Alertes
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant transition-colors duration-200 font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined">list_alt</span>
+                Gestion des listes
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant transition-colors duration-200 font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined">sync</span>
+                Synchronisation
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant transition-colors duration-200 font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined">history_edu</span>
+                Journal d'audit
+            </a>
+</nav>
+<div class="mt-auto p-3 border-t border-on-primary-fixed-variant space-y-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant transition-colors duration-200 font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined">settings</span>
+                Paramètres
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant transition-colors duration-200 font-body-sm text-body-sm" href="#">
+<span class="material-symbols-outlined">logout</span>
+                Déconnexion
+            </a>
+</div>
+</aside>
+<!-- Main Content -->
+<main class="ml-[260px] pt-[56px] min-h-screen p-container-gap">
+<div class="max-w-5xl mx-auto">
+<!-- Header Section -->
+<div class="flex items-center justify-between mb-6">
+<div>
+<h2 class="font-display text-display text-on-surface">Génération DOS</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Déclaration d'Opération Suspecte (DOS) pré-remplie.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 bg-surface-container-lowest border border-border-default text-on-surface rounded font-caption text-caption hover:bg-surface-container transition-colors">
+                        Annuler
+                    </button>
+<button class="px-4 py-2 bg-primary text-on-primary rounded font-caption text-caption hover:opacity-90 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">picture_as_pdf</span>
+                        Exporter en PDF pour CENTIF
+                    </button>
+</div>
+</div>
+<!-- Warning Banner -->
+<div class="bg-error-container border border-error rounded-DEFAULT p-4 mb-container-gap flex items-start gap-3">
+<span class="material-symbols-outlined text-error mt-0.5">warning</span>
+<div>
+<h4 class="font-headline-md text-headline-md text-error mb-1 uppercase tracking-wide text-sm">Confidentiel</h4>
+<p class="font-body-sm text-body-sm text-on-error-container">
+                        Ne jamais révéler l'existence de cette déclaration au client (Art. 72 Loi LBC/FT).
+                    </p>
+</div>
+</div>
+<!-- Document Layout Form -->
+<div class="bg-surface-container-lowest border border-border-default rounded-DEFAULT shadow-sm">
+<!-- Section 1: Identité du déclarant -->
+<div class="p-6 border-b border-border-default">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">account_balance</span>
+                        Identité du déclarant
+                    </h3>
+<div class="grid grid-cols-12 gap-4">
+<div class="col-span-12 md:col-span-6">
+<label class="block font-label-caps text-label-caps text-outline mb-1 uppercase">Institution</label>
+<input class="w-full bg-surface border border-border-default rounded px-3 py-2 text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary" readonly="" type="text" value="CLCAM Parakou"/>
+</div>
+<div class="col-span-12 md:col-span-6">
+<label class="block font-label-caps text-label-caps text-outline mb-1 uppercase">Code Agence</label>
+<input class="w-full bg-surface border border-border-default rounded px-3 py-2 text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary" readonly="" type="text" value="PRK-001"/>
+</div>
+<div class="col-span-12">
+<label class="block font-label-caps text-label-caps text-outline mb-1 uppercase">Adresse</label>
+<input class="w-full bg-surface border border-border-default rounded px-3 py-2 text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary" readonly="" type="text" value="Quartier Dépôt, Parakou, Bénin"/>
+</div>
+</div>
+</div>
+<!-- Section 2: Identité du client -->
+<div class="p-6 border-b border-border-default bg-background/50">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">person</span>
+                        Identité du client suspect
+                    </h3>
+<div class="grid grid-cols-12 gap-4">
+<div class="col-span-12 md:col-span-4">
+<label class="block font-label-caps text-label-caps text-outline mb-1 uppercase">Nom</label>
+<input class="w-full bg-surface-container-lowest border border-border-default rounded px-3 py-2 text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary" type="text" value="KOFFI"/>
+</div>
+<div class="col-span-12 md:col-span-4">
+<label class="block font-label-caps text-label-caps text-outline mb-1 uppercase">Prénoms</label>
+<input class="w-full bg-surface-container-lowest border border-border-default rounded px-3 py-2 text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary" type="text" value="Mensah"/>
+</div>
+<div class="col-span-12 md:col-span-4">
+<label class="block font-label-caps text-label-caps text-outline mb-1 uppercase">N° Compte</label>
+<input class="w-full bg-surface-container-lowest border border-border-default rounded px-3 py-2 text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary" type="text" value="001452398574"/>
+</div>
+<div class="col-span-12 md:col-span-6">
+<label class="block font-label-caps text-label-caps text-outline mb-1 uppercase">Profession déclarée</label>
+<input class="w-full bg-surface-container-lowest border border-border-default rounded px-3 py-2 text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary" type="text" value="Commerçant"/>
+</div>
+<div class="col-span-12 md:col-span-6">
+<label class="block font-label-caps text-label-caps text-outline mb-1 uppercase">Pièce d'identité</label>
+<input class="w-full bg-surface-container-lowest border border-border-default rounded px-3 py-2 text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary" type="text" value="CIP N° 9876543210 (Expire: 12/2026)"/>
+</div>
+</div>
+</div>
+<!-- Section 3: Opérations suspectes -->
+<div class="p-6 border-b border-border-default">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">receipt_long</span>
+                        Opérations justifiant le soupçon
+                    </h3>
+<div class="border border-border-default rounded-DEFAULT overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-dim border-b border-border-default">
+<th class="px-cell-padding-h py-cell-padding-v font-label-caps text-label-caps text-on-surface uppercase w-32">Date</th>
+<th class="px-cell-padding-h py-cell-padding-v font-label-caps text-label-caps text-on-surface uppercase w-32">Type</th>
+<th class="px-cell-padding-h py-cell-padding-v font-label-caps text-label-caps text-on-surface uppercase">Description</th>
+<th class="px-cell-padding-h py-cell-padding-v font-label-caps text-label-caps text-on-surface uppercase text-right w-40">Montant (FCFA)</th>
+</tr>
+</thead>
+<tbody class="bg-surface-container-lowest">
+<tr class="border-b border-border-default hover:bg-surface transition-colors">
+<td class="px-cell-padding-h py-cell-padding-v font-data-table text-data-table text-on-surface">12/10/2023</td>
+<td class="px-cell-padding-h py-cell-padding-v font-data-table text-data-table text-on-surface">
+<span class="inline-flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">call_received</span>
+                                            Dépôt Espèces
+                                        </span>
+</td>
+<td class="px-cell-padding-h py-cell-padding-v font-data-table text-data-table text-on-surface-variant">Dépôt multiple en petites coupures non justifié par l'activité.</td>
+<td class="px-cell-padding-h py-cell-padding-v font-data-table text-data-table text-on-surface font-semibold text-right">4,500,000</td>
+</tr>
+<tr class="border-b border-border-default hover:bg-surface transition-colors">
+<td class="px-cell-padding-h py-cell-padding-v font-data-table text-data-table text-on-surface">14/10/2023</td>
+<td class="px-cell-padding-h py-cell-padding-v font-data-table text-data-table text-on-surface">
+<span class="inline-flex items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">call_made</span>
+                                            Virement
+                                        </span>
+</td>
+<td class="px-cell-padding-h py-cell-padding-v font-data-table text-data-table text-on-surface-variant">Transfert immédiat vers compte étranger (Pays à risque).</td>
+<td class="px-cell-padding-h py-cell-padding-v font-data-table text-data-table text-on-surface font-semibold text-right">4,450,000</td>
+</tr>
+</tbody>
+<tfoot class="bg-surface-container">
+<tr>
+<td class="px-cell-padding-h py-cell-padding-v font-caption text-caption text-on-surface text-right font-medium" colspan="3">Total des opérations suspectes</td>
+<td class="px-cell-padding-h py-cell-padding-v font-data-table text-data-table text-on-surface font-bold text-right">8,950,000</td>
+</tr>
+</tfoot>
+</table>
+</div>
+</div>
+<!-- Section 4: Motif du soupçon -->
+<div class="p-6">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">edit_note</span>
+                        Motif du soupçon
+                    </h3>
+<div class="grid grid-cols-12 gap-4">
+<div class="col-span-12">
+<label class="block font-label-caps text-label-caps text-outline mb-1 uppercase">Exposé détaillé des faits et motifs</label>
+<textarea class="w-full bg-surface-container-lowest border border-border-default rounded px-3 py-2 text-body-sm font-body-sm text-on-surface focus:outline-none focus:border-primary resize-y" rows="6">Le client KOFFI Mensah, déclarant une activité de petit commerce local, a effectué une série de dépôts en espèces d'un montant total inhabituel. Ces fonds ont été presque immédiatement transférés vers un compte domicilié dans une juridiction considérée comme à haut risque, sans justification économique apparente liée à son profil. Le comportement du client lors des dépôts était évasif concernant l'origine exacte des fonds (fractionnement apparent).</textarea>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-6 flex justify-end">
+<button class="px-6 py-2 bg-primary text-on-primary rounded font-caption text-caption hover:opacity-90 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">save</span>
+                    Enregistrer Brouillon
+                </button>
+</div>
+</div>
+</main>
+</body></html>

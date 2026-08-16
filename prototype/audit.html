@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html class="light" lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SentinelleCoop — Journal d'audit</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="app.js"></script>
+<style>body{font-family:'Inter',sans-serif;}</style>
+</head>
+<body class="bg-background text-on-background font-body-sm antialiased h-screen flex overflow-hidden">
+<nav id="sidebar"></nav>
+<div class="flex-1 ml-[260px] flex flex-col h-full overflow-hidden">
+<header id="topbar"></header>
+<main class="flex-1 overflow-y-auto mt-[56px] p-container-gap">
+<div class="max-w-6xl mx-auto space-y-6">
+  <div class="flex justify-between items-end">
+    <div><h2 class="font-display text-display">Journal d'audit</h2><p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Traçabilité de toutes les actions (exigence réglementaire).</p></div>
+    <button class="h-10 px-4 bg-surface-header border border-border-default rounded font-body-sm font-medium flex items-center gap-2 hover:bg-surface-container"><span class="material-symbols-outlined text-[20px]">download</span> Exporter le journal</button>
+  </div>
+  <!-- Filtres -->
+  <div class="bg-surface-header border border-border-default rounded-lg p-4 flex flex-wrap gap-3 items-end">
+    <div class="flex flex-col gap-1"><label class="font-caption text-caption text-on-surface-variant">Utilisateur</label><select class="h-9 px-3 border-outline-variant rounded text-body-sm"><option>Tous</option><option>agent.conformite</option><option>gerant.parakou</option></select></div>
+    <div class="flex flex-col gap-1"><label class="font-caption text-caption text-on-surface-variant">Type d'action</label><select class="h-9 px-3 border-outline-variant rounded text-body-sm"><option>Toutes</option><option>Filtrage</option><option>Alerte</option><option>DOS</option><option>Synchronisation</option></select></div>
+    <div class="flex flex-col gap-1"><label class="font-caption text-caption text-on-surface-variant">Depuis</label><input type="date" value="2024-05-20" class="h-9 px-3 border-outline-variant rounded text-body-sm"/></div>
+    <button class="h-9 px-4 bg-primary text-on-primary rounded font-caption text-caption flex items-center gap-2 hover:opacity-90"><span class="material-symbols-outlined text-[18px]">filter_alt</span> Filtrer</button>
+  </div>
+  <!-- Journal -->
+  <div class="bg-surface-header border border-border-default rounded-lg overflow-hidden">
+    <table class="w-full text-left border-collapse">
+      <thead class="bg-surface font-label-caps text-label-caps uppercase text-on-surface-variant border-b border-border-default">
+        <tr><th class="px-cell-padding-h py-cell-padding-v font-semibold">Date / Heure</th><th class="px-cell-padding-h py-cell-padding-v font-semibold">Utilisateur</th><th class="px-cell-padding-h py-cell-padding-v font-semibold">Action</th><th class="px-cell-padding-h py-cell-padding-v font-semibold">Élément concerné</th></tr></thead>
+      <tbody class="font-data-table text-data-table divide-y divide-border-default">
+        <tr class="hover:bg-surface-container-low"><td class="px-cell-padding-h py-2.5">24/05 09:15:02</td><td class="px-cell-padding-h py-2.5 font-medium">agent.conformite</td><td class="px-cell-padding-h py-2.5"><span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-error-container text-on-error-container">Génération DOS</span></td><td class="px-cell-padding-h py-2.5 text-on-surface-variant">Alerte #AL-2024-892 — KOFFI Mensah</td></tr>
+        <tr class="hover:bg-surface-container-low"><td class="px-cell-padding-h py-2.5">24/05 09:14:22</td><td class="px-cell-padding-h py-2.5 font-medium">agent.conformite</td><td class="px-cell-padding-h py-2.5"><span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-tertiary-fixed text-tertiary-container">Alerte créée</span></td><td class="px-cell-padding-h py-2.5 text-on-surface-variant">Smurfing — KOFFI Mensah</td></tr>
+        <tr class="hover:bg-surface-container-low"><td class="px-cell-padding-h py-2.5">24/05 09:12:47</td><td class="px-cell-padding-h py-2.5 font-medium">agent.conformite</td><td class="px-cell-padding-h py-2.5"><span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-surface-container-high text-on-surface-variant">Filtrage</span></td><td class="px-cell-padding-h py-2.5 text-on-surface-variant">Recherche : ADANHOUNME Koffi</td></tr>
+        <tr class="hover:bg-surface-container-low"><td class="px-cell-padding-h py-2.5">23/05 16:40:10</td><td class="px-cell-padding-h py-2.5 font-medium">gerant.parakou</td><td class="px-cell-padding-h py-2.5"><span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-surface-container-high text-on-surface-variant">Mise à jour liste</span></td><td class="px-cell-padding-h py-2.5 text-on-surface-variant">Sanctions ONU (v22/05)</td></tr>
+        <tr class="hover:bg-surface-container-low"><td class="px-cell-padding-h py-2.5">21/05 14:02:33</td><td class="px-cell-padding-h py-2.5 font-medium">agent.conformite</td><td class="px-cell-padding-h py-2.5"><span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-primary-container text-on-primary">Synchronisation</span></td><td class="px-cell-padding-h py-2.5 text-on-surface-variant">Import — CLCAM Tchaourou (1 340 empreintes)</td></tr>
+        <tr class="hover:bg-surface-container-low"><td class="px-cell-padding-h py-2.5">21/05 08:03:19</td><td class="px-cell-padding-h py-2.5 font-medium">agent.conformite</td><td class="px-cell-padding-h py-2.5"><span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-success/10 text-success border border-success/30">Connexion</span></td><td class="px-cell-padding-h py-2.5 text-on-surface-variant">Session ouverte (mode hors-ligne)</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</main>
+</div>
+<script>renderChrome('audit',"Journal d'audit");</script>
+</body>
+</html>

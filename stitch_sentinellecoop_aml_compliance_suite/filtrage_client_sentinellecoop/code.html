@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+
+<html class="light" lang="fr"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Filtrage / Recherche client - SentinelleCoop</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-background": "#0d1c2f",
+                      "status-offline": "#64748B",
+                      "inverse-on-surface": "#ebf1ff",
+                      "on-secondary": "#ffffff",
+                      "primary": "#091426",
+                      "secondary-container": "#e0e3e5",
+                      "surface-container": "#e6eeff",
+                      "on-tertiary-fixed-variant": "#564427",
+                      "surface-dim": "#ccdbf4",
+                      "background": "#f8f9ff",
+                      "inverse-primary": "#bcc7de",
+                      "secondary-fixed": "#e0e3e5",
+                      "outline-variant": "#c5c6cd",
+                      "on-tertiary-fixed": "#271902",
+                      "error-container": "#ffdad6",
+                      "surface-tint": "#545f73",
+                      "warning": "#D97706",
+                      "on-primary-fixed": "#111c2d",
+                      "inverse-surface": "#233144",
+                      "surface-container-high": "#dde9ff",
+                      "on-error": "#ffffff",
+                      "surface-bright": "#f8f9ff",
+                      "secondary-fixed-dim": "#c4c7c9",
+                      "on-secondary-fixed": "#191c1e",
+                      "surface-container-highest": "#d5e3fd",
+                      "on-tertiary-container": "#a38c6a",
+                      "on-secondary-fixed-variant": "#444749",
+                      "on-primary-container": "#8590a6",
+                      "primary-fixed-dim": "#bcc7de",
+                      "on-surface": "#0d1c2f",
+                      "surface": "#f8f9ff",
+                      "on-error-container": "#93000a",
+                      "on-primary": "#ffffff",
+                      "on-tertiary": "#ffffff",
+                      "border-default": "#E2E8F0",
+                      "primary-fixed": "#d8e3fb",
+                      "primary-container": "#1e293b",
+                      "danger": "#DC2626",
+                      "success": "#059669",
+                      "on-secondary-container": "#626567",
+                      "outline": "#75777d",
+                      "error": "#ba1a1a",
+                      "secondary": "#5c5f61",
+                      "surface-header": "#FFFFFF",
+                      "on-primary-fixed-variant": "#3c475a",
+                      "tertiary": "#1e1200",
+                      "tertiary-fixed": "#fadfb8",
+                      "tertiary-container": "#35260c",
+                      "tertiary-fixed-dim": "#ddc39d",
+                      "on-surface-variant": "#45474c",
+                      "surface-container-low": "#eff4ff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-variant": "#d5e3fd"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "header-height": "56px",
+                      "gutter": "16px",
+                      "sidebar-width": "260px",
+                      "cell-padding-h": "12px",
+                      "container-gap": "24px",
+                      "cell-padding-v": "8px"
+              },
+              "fontFamily": {
+                      "body-sm": ["Inter", "sans-serif"],
+                      "data-table": ["Inter", "sans-serif"],
+                      "headline-md": ["Inter", "sans-serif"],
+                      "label-caps": ["Inter", "sans-serif"],
+                      "display": ["Inter", "sans-serif"],
+                      "caption": ["Inter", "sans-serif"]
+              },
+              "fontSize": {
+                      "body-sm": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                      "data-table": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                      "headline-md": ["18px", { "lineHeight": "24px", "fontWeight": "600" }],
+                      "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                      "display": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                      "caption": ["12px", { "lineHeight": "16px", "fontWeight": "500" }]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex">
+<!-- SideNavBar -->
+<nav class="bg-primary dark:bg-primary fixed left-0 top-0 h-screen w-[260px] bg-primary border-r border-outline-variant flat no shadows flex flex-col h-full overflow-y-auto z-20">
+<div class="p-6 border-b border-on-primary-fixed-variant">
+<h1 class="font-headline-md text-headline-md font-bold text-on-primary dark:text-on-primary">SentinelleCoop</h1>
+<p class="font-caption text-caption text-on-primary-container mt-1">Portail Compliance</p>
+</div>
+<div class="flex-1 py-4 flex flex-col gap-1 px-3">
+<a class="text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant hover:bg-on-primary-fixed-variant transition-colors duration-200 cursor-pointer active:opacity-90 flex items-center gap-3 px-3 py-2 rounded" href="#">
+<span class="material-symbols-outlined font-[300]">dashboard</span>
+<span class="font-body-sm text-body-sm">Tableau de bord</span>
+</a>
+<a class="bg-primary-container text-on-primary-container font-semibold hover:bg-on-primary-fixed-variant transition-colors duration-200 cursor-pointer active:opacity-90 flex items-center gap-3 px-3 py-2 rounded" href="#">
+<span class="material-symbols-outlined font-[300]" style="font-variation-settings: 'FILL' 1;">filter_alt</span>
+<span class="font-body-sm text-body-sm">Filtrage</span>
+</a>
+<a class="text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant hover:bg-on-primary-fixed-variant transition-colors duration-200 cursor-pointer active:opacity-90 flex items-center gap-3 px-3 py-2 rounded" href="#">
+<span class="material-symbols-outlined font-[300]">person_search</span>
+<span class="font-body-sm text-body-sm">Fiche Client</span>
+</a>
+<a class="text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant hover:bg-on-primary-fixed-variant transition-colors duration-200 cursor-pointer active:opacity-90 flex items-center gap-3 px-3 py-2 rounded" href="#">
+<span class="material-symbols-outlined font-[300]">notifications_active</span>
+<span class="font-body-sm text-body-sm">Alertes</span>
+</a>
+<a class="text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant hover:bg-on-primary-fixed-variant transition-colors duration-200 cursor-pointer active:opacity-90 flex items-center gap-3 px-3 py-2 rounded" href="#">
+<span class="material-symbols-outlined font-[300]">list_alt</span>
+<span class="font-body-sm text-body-sm">Gestion des listes</span>
+</a>
+<a class="text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant hover:bg-on-primary-fixed-variant transition-colors duration-200 cursor-pointer active:opacity-90 flex items-center gap-3 px-3 py-2 rounded" href="#">
+<span class="material-symbols-outlined font-[300]">sync</span>
+<span class="font-body-sm text-body-sm">Synchronisation</span>
+</a>
+<a class="text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant hover:bg-on-primary-fixed-variant transition-colors duration-200 cursor-pointer active:opacity-90 flex items-center gap-3 px-3 py-2 rounded" href="#">
+<span class="material-symbols-outlined font-[300]">history_edu</span>
+<span class="font-body-sm text-body-sm">Journal d'audit</span>
+</a>
+</div>
+<div class="p-4 border-t border-on-primary-fixed-variant flex flex-col gap-1 px-3">
+<a class="text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant transition-colors duration-200 cursor-pointer active:opacity-90 flex items-center gap-3 px-3 py-2 rounded" href="#">
+<span class="material-symbols-outlined font-[300]">settings</span>
+<span class="font-body-sm text-body-sm">Paramètres</span>
+</a>
+<a class="text-on-primary-container opacity-80 hover:bg-on-primary-fixed-variant transition-colors duration-200 cursor-pointer active:opacity-90 flex items-center gap-3 px-3 py-2 rounded" href="#">
+<span class="material-symbols-outlined font-[300]">logout</span>
+<span class="font-body-sm text-body-sm">Déconnexion</span>
+</a>
+</div>
+</nav>
+<!-- Main Content Area -->
+<div class="flex-1 flex flex-col ml-[260px] min-h-screen">
+<!-- TopNavBar -->
+<header class="bg-surface-header dark:bg-on-background fixed top-0 right-0 h-[56px] w-[calc(100%-260px)] bg-surface-header border-b border-outline-variant flat no shadows flex justify-between items-center px-gutter w-full ml-[260px] z-10">
+<div class="flex items-center gap-4">
+<h2 class="font-headline-md text-headline-md font-extrabold text-on-surface dark:text-on-background">Filtrage Client</h2>
+</div>
+<div class="flex items-center gap-4 flex items-center gap-4">
+<div class="flex items-center gap-2 px-3 py-1 border border-outline-variant rounded bg-surface-container-low">
+<span class="material-symbols-outlined text-[16px] text-status-offline">cloud_off</span>
+<span class="font-caption text-caption text-on-surface-variant">Mode hors-ligne actif</span>
+</div>
+<button class="text-on-surface-variant hover:bg-surface-container transition-colors p-2 rounded">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+<button class="text-on-surface-variant hover:bg-surface-container transition-colors p-2 rounded relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-danger rounded-full"></span>
+</button>
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-bold text-sm overflow-hidden">
+<img alt="Profil de l'agent" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMjqc3A7ilQN3y2a4rmYSdwPdU5d1C2-8Nb9WzHt5bqt1D8YjK49YQNhAXgdgE8tTrDVOdlaJoQTIR_y1VMs1cKCAqGHoarwsmAs9NW01xGTJKnTuuPeH-ko1IAZoVc4GMsF092RD32rkZiXuOCMF719xn6LhpbfzAhmByhuLrZh6jbcjfZ50WaqM-vwER4HELESrF4F4B74elG7Jw5-kAzDY1LCOoowh7j0NHL85jSJScT47yw8GS"/>
+</div>
+</div>
+</header>
+<!-- Main Workspace -->
+<main class="flex-1 mt-[56px] p-gutter max-w-[1200px] w-full mx-auto flex flex-col gap-container-gap">
+<!-- Input Form Section -->
+<section class="bg-surface-container-lowest border border-border-default rounded flex flex-col">
+<div class="px-6 py-4 border-b border-border-default bg-surface-bright flex justify-between items-center">
+<h3 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">person_search</span>
+                        Critères de recherche
+                    </h3>
+<button class="text-primary font-caption text-caption hover:underline">Effacer le formulaire</button>
+</div>
+<div class="p-6">
+<form class="grid grid-cols-12 gap-x-6 gap-y-4">
+<!-- Nom -->
+<div class="col-span-12 md:col-span-5 flex flex-col gap-1">
+<label class="font-caption text-caption text-on-surface-variant">Nom <span class="text-danger">*</span></label>
+<input class="w-full border-outline-variant rounded focus:ring-1 focus:ring-primary focus:border-primary font-body-sm text-body-sm text-on-surface h-10 px-3" placeholder="Ex: DOSSOU" type="text" value="ADANHOUNME"/>
+</div>
+<!-- Prénom -->
+<div class="col-span-12 md:col-span-4 flex flex-col gap-1">
+<label class="font-caption text-caption text-on-surface-variant">Prénom</label>
+<input class="w-full border-outline-variant rounded focus:ring-1 focus:ring-primary focus:border-primary font-body-sm text-body-sm text-on-surface h-10 px-3" placeholder="Ex: Jean" type="text" value="Koffi"/>
+</div>
+<!-- Date de naissance -->
+<div class="col-span-12 md:col-span-3 flex flex-col gap-1">
+<label class="font-caption text-caption text-on-surface-variant">Date de naissance</label>
+<input class="w-full border-outline-variant rounded focus:ring-1 focus:ring-primary focus:border-primary font-body-sm text-body-sm text-on-surface h-10 px-3" type="date" value="1975-04-12"/>
+</div>
+<!-- Pièce d'identité -->
+<div class="col-span-12 md:col-span-5 flex flex-col gap-1">
+<label class="font-caption text-caption text-on-surface-variant">N° Pièce d'identité</label>
+<input class="w-full border-outline-variant rounded focus:ring-1 focus:ring-primary focus:border-primary font-body-sm text-body-sm text-on-surface h-10 px-3" placeholder="N° CIP ou Passeport" type="text" value="1029384756"/>
+</div>
+<!-- Téléphone -->
+<div class="col-span-12 md:col-span-4 flex flex-col gap-1">
+<label class="font-caption text-caption text-on-surface-variant">Téléphone</label>
+<input class="w-full border-outline-variant rounded focus:ring-1 focus:ring-primary focus:border-primary font-body-sm text-body-sm text-on-surface h-10 px-3" placeholder="+229..." type="tel"/>
+</div>
+<!-- Actions -->
+<div class="col-span-12 md:col-span-3 flex items-end justify-end gap-3 mt-2">
+<button class="h-10 px-4 bg-primary text-on-primary rounded font-caption text-caption hover:bg-on-primary-fixed-variant transition-colors flex items-center gap-2" type="button">
+<span class="material-symbols-outlined text-[18px]">search</span>
+                                Lancer le filtrage
+                            </button>
+</div>
+</form>
+</div>
+</section>
+<!-- Results Section -->
+<section class="flex flex-col gap-6">
+<!-- Verdict Banner -->
+<div class="bg-surface-container-lowest border border-warning rounded overflow-hidden flex flex-col md:flex-row shadow-[0_4px_12px_rgba(0,0,0,0.05)]">
+<div class="bg-[#FFFBEB] px-6 py-8 flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-warning/30 min-w-[240px]">
+<span class="font-label-caps text-label-caps text-warning mb-1 uppercase tracking-wider">Verdict</span>
+<h2 class="font-display text-display text-warning font-bold text-center">À VÉRIFIER</h2>
+<div class="mt-4 w-16 h-16 rounded-full border-4 border-warning flex items-center justify-center bg-white">
+<span class="font-headline-md text-headline-md text-warning font-bold">85</span>
+</div>
+<span class="font-caption text-caption text-on-surface-variant mt-2">Score de risque / 100</span>
+</div>
+<div class="p-6 flex-1 flex flex-col justify-between bg-white">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-warning">warning</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">Motif de l'alerte</h3>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-2 bg-surface p-4 rounded border border-border-default">
+<strong class="text-on-surface">Correspondance forte avec une PPE :</strong> M. ADANHOUNME K. (88%)
+                            </p>
+</div>
+<div class="flex gap-3 mt-6 justify-end border-t border-border-default pt-4">
+<button class="px-4 h-10 border border-outline-variant text-on-surface rounded font-caption text-caption hover:bg-surface-container transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">folder_open</span>
+                                Ouvrir fiche client
+                            </button>
+<button class="px-4 h-10 bg-warning text-white rounded font-caption text-caption hover:bg-warning/90 transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add_alert</span>
+                                Générer Alerte
+                            </button>
+</div>
+</div>
+</div>
+<!-- Matches Table -->
+<div class="bg-surface-container-lowest border border-border-default rounded flex flex-col">
+<div class="px-6 py-4 border-b border-border-default bg-[#F1F5F9] flex justify-between items-center">
+<h3 class="font-body-sm text-body-sm font-semibold text-on-surface uppercase tracking-wide">Détail des correspondances</h3>
+<span class="bg-warning/20 text-warning px-2 py-1 rounded font-label-caps text-label-caps">2 RÉSULTATS TROUVÉS</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-border-default bg-surface">
+<th class="py-cell-padding-v px-cell-padding-h font-label-caps text-label-caps text-on-surface-variant font-semibold">Nom sur liste</th>
+<th class="py-cell-padding-v px-cell-padding-h font-label-caps text-label-caps text-on-surface-variant font-semibold">Type</th>
+<th class="py-cell-padding-v px-cell-padding-h font-label-caps text-label-caps text-on-surface-variant font-semibold">Liste d'origine</th>
+<th class="py-cell-padding-v px-cell-padding-h font-label-caps text-label-caps text-on-surface-variant font-semibold text-right">Score de ressemblance</th>
+<th class="py-cell-padding-v px-cell-padding-h font-label-caps text-label-caps text-on-surface-variant font-semibold w-[100px]">Actions</th>
+</tr>
+</thead>
+<tbody class="font-data-table text-data-table">
+<tr class="border-b border-border-default hover:bg-surface-container-low transition-colors">
+<td class="py-cell-padding-v px-cell-padding-h text-on-surface font-medium">ADANHOUNME Koffi</td>
+<td class="py-cell-padding-v px-cell-padding-h">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-secondary-container text-on-secondary-container">
+                                            PPE
+                                        </span>
+</td>
+<td class="py-cell-padding-v px-cell-padding-h text-on-surface-variant">Registre National Bénin</td>
+<td class="py-cell-padding-v px-cell-padding-h text-right">
+<div class="flex items-center justify-end gap-2">
+<div class="w-16 h-1.5 bg-surface-container rounded overflow-hidden">
+<div class="bg-warning h-full w-[88%]"></div>
+</div>
+<span class="font-bold text-warning">88%</span>
+</div>
+</td>
+<td class="py-cell-padding-v px-cell-padding-h">
+<button class="text-primary hover:bg-surface-container p-1 rounded transition-colors" title="Voir détails">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors">
+<td class="py-cell-padding-v px-cell-padding-h text-on-surface font-medium">ADANHOUMME K.</td>
+<td class="py-cell-padding-v px-cell-padding-h">
+<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-error-container text-on-error-container">
+                                            Sanction
+                                        </span>
+</td>
+<td class="py-cell-padding-v px-cell-padding-h text-on-surface-variant">Liste OFAC</td>
+<td class="py-cell-padding-v px-cell-padding-h text-right">
+<div class="flex items-center justify-end gap-2">
+<div class="w-16 h-1.5 bg-surface-container rounded overflow-hidden">
+<div class="bg-secondary h-full w-[65%]"></div>
+</div>
+<span class="font-bold text-on-surface-variant">65%</span>
+</div>
+</td>
+<td class="py-cell-padding-v px-cell-padding-h">
+<button class="text-primary hover:bg-surface-container p-1 rounded transition-colors" title="Voir détails">
+<span class="material-symbols-outlined text-[18px]">visibility</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</main>
+</div>
+</body></html>

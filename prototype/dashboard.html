@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html class="light" lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SentinelleCoop — Tableau de bord</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="app.js"></script>
+<style>body{font-family:'Inter',sans-serif;}</style>
+</head>
+<body class="bg-background text-on-background font-body-sm antialiased h-screen flex overflow-hidden">
+<nav id="sidebar"></nav>
+<div class="flex-1 ml-[260px] flex flex-col h-full overflow-hidden">
+<header id="topbar"></header>
+<main class="flex-1 overflow-y-auto mt-[56px] p-container-gap">
+<div class="max-w-7xl mx-auto space-y-6">
+  <div class="flex justify-between items-end">
+    <div>
+      <h2 class="font-display text-display text-on-background">Tableau de bord</h2>
+      <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Vue globale de la conformité — CLCAM Parakou</p>
+    </div>
+  </div>
+  <!-- KPI -->
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+    <a href="alertes.html" class="bg-surface-header border border-border-default rounded-lg p-5 flex flex-col justify-between hover:border-primary transition-colors">
+      <div class="flex justify-between items-start">
+        <span class="text-body-sm text-on-surface-variant font-medium">Alertes ouvertes</span>
+        <span class="material-symbols-outlined text-danger bg-error-container p-1.5 rounded">warning</span>
+      </div>
+      <div class="mt-4"><span class="text-3xl font-bold">12</span>
+        <div class="flex items-center gap-1 mt-1 text-danger font-caption text-caption"><span class="material-symbols-outlined text-[14px]">trending_up</span><span>+2 depuis hier</span></div></div>
+    </a>
+    <div class="bg-surface-header border border-border-default rounded-lg p-5 flex flex-col justify-between">
+      <div class="flex justify-between items-start"><span class="text-body-sm text-on-surface-variant font-medium">Clients à vérifier</span>
+        <span class="material-symbols-outlined text-warning bg-tertiary-fixed p-1.5 rounded">person_search</span></div>
+      <div class="mt-4"><span class="text-3xl font-bold">5</span><div class="mt-1 text-on-surface-variant font-caption text-caption">Priorité haute</div></div>
+    </div>
+    <a href="dos.html" class="bg-surface-header border border-border-default rounded-lg p-5 flex flex-col justify-between hover:border-primary transition-colors">
+      <div class="flex justify-between items-start"><span class="text-body-sm text-on-surface-variant font-medium">DOS en attente</span>
+        <span class="material-symbols-outlined text-primary bg-primary-fixed p-1.5 rounded">assignment_late</span></div>
+      <div class="mt-4"><span class="text-3xl font-bold">3</span><div class="mt-1 text-on-surface-variant font-caption text-caption">Déclarations d'Opérations Suspectes</div></div>
+    </a>
+    <a href="listes.html" class="bg-surface-header border border-border-default rounded-lg p-5 flex flex-col justify-between bg-surface-container-low hover:border-primary transition-colors">
+      <div class="flex justify-between items-start"><span class="text-body-sm text-on-surface-variant font-medium">État des listes</span>
+        <span class="material-symbols-outlined text-success bg-success/10 p-1.5 rounded">fact_check</span></div>
+      <div class="mt-4"><span class="text-lg font-bold">Mise à jour OK</span><div class="flex items-center gap-1 mt-1 text-on-surface-variant font-caption text-caption"><span class="material-symbols-outlined text-[14px]">update</span><span>Dernière maj: 24/05/2024</span></div></div>
+    </a>
+  </div>
+  <!-- Main grid -->
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+    <div class="lg:col-span-8 bg-surface-header border border-border-default rounded-lg overflow-hidden flex flex-col">
+      <div class="px-5 py-4 border-b border-border-default flex justify-between items-center">
+        <h3 class="font-headline-md text-headline-md">Dernières alertes</h3>
+        <a href="alertes.html" class="font-caption text-caption text-primary hover:underline font-medium">Voir tout</a>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead class="bg-surface text-on-surface-variant font-label-caps text-label-caps uppercase border-b border-border-default">
+            <tr><th class="px-cell-padding-h py-cell-padding-v font-semibold">Date</th>
+            <th class="px-cell-padding-h py-cell-padding-v font-semibold">Membre (CLCAM)</th>
+            <th class="px-cell-padding-h py-cell-padding-v font-semibold">Type</th>
+            <th class="px-cell-padding-h py-cell-padding-v font-semibold">Gravité</th>
+            <th class="px-cell-padding-h py-cell-padding-v font-semibold">Statut</th>
+            <th class="px-cell-padding-h py-cell-padding-v font-semibold text-right">Actions</th></tr>
+          </thead>
+          <tbody class="font-data-table text-data-table divide-y divide-border-default">
+            <tr class="hover:bg-surface-container-low"><td class="px-cell-padding-h py-2">24/05 09:12</td><td class="px-cell-padding-h py-2 font-medium">KOFFI Mensah (C-102)</td><td class="px-cell-padding-h py-2 text-on-surface-variant">Smurfing</td>
+              <td class="px-cell-padding-h py-2"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-error-container text-on-error-container uppercase">Haute</span></td>
+              <td class="px-cell-padding-h py-2"><span class="inline-flex items-center gap-1 text-danger font-medium"><span class="w-1.5 h-1.5 rounded-full bg-danger"></span>Ouvert</span></td>
+              <td class="px-cell-padding-h py-2 text-right"><a href="alertes.html" class="p-1 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container inline-block"><span class="material-symbols-outlined text-[18px]">visibility</span></a></td></tr>
+            <tr class="hover:bg-surface-container-low bg-surface-bright"><td class="px-cell-padding-h py-2">23/05 15:45</td><td class="px-cell-padding-h py-2 font-medium">SARL Immob (C-405)</td><td class="px-cell-padding-h py-2 text-on-surface-variant">Sanction</td>
+              <td class="px-cell-padding-h py-2"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-error-container text-on-error-container uppercase">Haute</span></td>
+              <td class="px-cell-padding-h py-2"><span class="inline-flex items-center gap-1 text-danger font-medium"><span class="w-1.5 h-1.5 rounded-full bg-danger"></span>Ouvert</span></td>
+              <td class="px-cell-padding-h py-2 text-right"><a href="alertes.html" class="p-1 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container inline-block"><span class="material-symbols-outlined text-[18px]">visibility</span></a></td></tr>
+            <tr class="hover:bg-surface-container-low"><td class="px-cell-padding-h py-2">23/05 11:20</td><td class="px-cell-padding-h py-2 font-medium">DANSOU Marie (C-882)</td><td class="px-cell-padding-h py-2 text-on-surface-variant">Homonymie</td>
+              <td class="px-cell-padding-h py-2"><span class="px-2 py-0.5 rounded text-[10px] font-bold bg-tertiary-fixed text-on-tertiary-fixed uppercase">Moyenne</span></td>
+              <td class="px-cell-padding-h py-2"><span class="inline-flex items-center gap-1 text-warning font-medium"><span class="w-1.5 h-1.5 rounded-full bg-warning"></span>En cours</span></td>
+              <td class="px-cell-padding-h py-2 text-right"><a href="alertes.html" class="p-1 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container inline-block"><span class="material-symbols-outlined text-[18px]">visibility</span></a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="lg:col-span-4 space-y-6">
+      <div class="bg-surface-header border border-border-default rounded-lg p-5">
+        <h3 class="font-headline-md text-headline-md mb-4">Actions rapides</h3>
+        <div class="space-y-3">
+          <a href="filtrage.html" class="w-full flex items-center justify-center gap-2 bg-primary text-on-primary py-2.5 px-4 rounded font-body-sm font-medium hover:opacity-90"><span class="material-symbols-outlined text-[20px]">search</span> Nouveau filtrage</a>
+          <a href="listes.html" class="w-full flex items-center justify-center gap-2 bg-surface text-on-background border border-border-default py-2.5 px-4 rounded font-body-sm font-medium hover:bg-surface-container-low"><span class="material-symbols-outlined text-[20px]">upload_file</span> Importer données</a>
+          <a href="listes.html" class="w-full flex items-center justify-center gap-2 bg-surface text-on-background border border-border-default py-2.5 px-4 rounded font-body-sm font-medium hover:bg-surface-container-low"><span class="material-symbols-outlined text-[20px]">update</span> Mettre à jour les listes</a>
+        </div>
+      </div>
+      <div class="bg-surface-header border border-warning/30 rounded-lg p-5 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-1 h-full bg-warning"></div>
+        <h3 class="font-headline-md text-headline-md mb-2 flex items-center gap-2"><span class="material-symbols-outlined text-warning">sync_problem</span> État du système</h3>
+        <div class="bg-tertiary-fixed/30 p-3 rounded border border-warning/20">
+          <p class="text-body-sm font-medium text-warning">Statut : Non synchronisé</p>
+          <p class="font-caption text-caption text-on-surface-variant mt-1">Le système fonctionne en mode hors-ligne. Les dernières modifications ne sont pas transmises au serveur central.</p>
+        </div>
+        <a href="synchronisation.html" class="mt-4 text-primary font-caption text-caption font-semibold flex items-center gap-1 hover:underline">Lancer la synchronisation <span class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+</div>
+<script>renderChrome('dashboard','Tableau de bord');</script>
+</body>
+</html>

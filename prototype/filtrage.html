@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html class="light" lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SentinelleCoop — Filtrage</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="app.js"></script>
+<style>body{font-family:'Inter',sans-serif;}</style>
+</head>
+<body class="bg-background text-on-background font-body-sm antialiased h-screen flex overflow-hidden">
+<nav id="sidebar"></nav>
+<div class="flex-1 ml-[260px] flex flex-col h-full overflow-hidden">
+<header id="topbar"></header>
+<main class="flex-1 overflow-y-auto mt-[56px] p-gutter">
+<div class="max-w-[1200px] w-full mx-auto flex flex-col gap-container-gap">
+  <div><h2 class="font-display text-display">Filtrage client</h2>
+  <p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Vérification d'un client contre les listes de sanctions et de PPE.</p></div>
+  <!-- Formulaire -->
+  <section class="bg-surface-container-lowest border border-border-default rounded flex flex-col">
+    <div class="px-6 py-4 border-b border-border-default bg-surface-bright flex justify-between items-center">
+      <h3 class="font-headline-md text-headline-md flex items-center gap-2"><span class="material-symbols-outlined text-primary">person_search</span> Critères de recherche</h3>
+      <button class="text-primary font-caption text-caption hover:underline">Effacer le formulaire</button>
+    </div>
+    <div class="p-6">
+      <form class="grid grid-cols-12 gap-x-6 gap-y-4" onsubmit="document.getElementById('resultats').classList.remove('hidden');return false;">
+        <div class="col-span-12 md:col-span-5 flex flex-col gap-1"><label class="font-caption text-caption text-on-surface-variant">Nom <span class="text-danger">*</span></label>
+          <input class="w-full border-outline-variant rounded focus:ring-1 focus:ring-primary focus:border-primary text-body-sm h-10 px-3" type="text" value="ADANHOUNME"/></div>
+        <div class="col-span-12 md:col-span-4 flex flex-col gap-1"><label class="font-caption text-caption text-on-surface-variant">Prénom</label>
+          <input class="w-full border-outline-variant rounded focus:ring-1 focus:ring-primary focus:border-primary text-body-sm h-10 px-3" type="text" value="Koffi"/></div>
+        <div class="col-span-12 md:col-span-3 flex flex-col gap-1"><label class="font-caption text-caption text-on-surface-variant">Date de naissance</label>
+          <input class="w-full border-outline-variant rounded focus:ring-1 focus:ring-primary focus:border-primary text-body-sm h-10 px-3" type="date" value="1975-04-12"/></div>
+        <div class="col-span-12 md:col-span-5 flex flex-col gap-1"><label class="font-caption text-caption text-on-surface-variant">N° Pièce d'identité</label>
+          <input class="w-full border-outline-variant rounded focus:ring-1 focus:ring-primary focus:border-primary text-body-sm h-10 px-3" type="text" value="1029384756"/></div>
+        <div class="col-span-12 md:col-span-4 flex flex-col gap-1"><label class="font-caption text-caption text-on-surface-variant">Téléphone</label>
+          <input class="w-full border-outline-variant rounded focus:ring-1 focus:ring-primary focus:border-primary text-body-sm h-10 px-3" placeholder="+229..." type="tel"/></div>
+        <div class="col-span-12 md:col-span-3 flex items-end justify-end gap-3 mt-2">
+          <button class="h-10 px-4 bg-primary text-on-primary rounded font-caption text-caption hover:bg-on-primary-fixed-variant transition-colors flex items-center gap-2" type="submit"><span class="material-symbols-outlined text-[18px]">search</span> Lancer le filtrage</button></div>
+      </form>
+    </div>
+  </section>
+  <!-- Résultats -->
+  <section id="resultats" class="flex flex-col gap-6">
+    <div class="bg-surface-container-lowest border border-warning rounded overflow-hidden flex flex-col md:flex-row">
+      <div class="bg-[#FFFBEB] px-6 py-8 flex flex-col items-center justify-center border-b md:border-b-0 md:border-r border-warning/30 min-w-[240px]">
+        <span class="font-label-caps text-label-caps text-warning mb-1 uppercase tracking-wider">Verdict</span>
+        <h2 class="font-display text-display text-warning font-bold text-center">À VÉRIFIER</h2>
+        <div class="mt-4 w-16 h-16 rounded-full border-4 border-warning flex items-center justify-center bg-white"><span class="font-headline-md text-headline-md text-warning font-bold">85</span></div>
+        <span class="font-caption text-caption text-on-surface-variant mt-2">Score de risque / 100</span>
+      </div>
+      <div class="p-6 flex-1 flex flex-col justify-between bg-white">
+        <div>
+          <div class="flex items-center gap-2 mb-2"><span class="material-symbols-outlined text-warning">warning</span><h3 class="font-headline-md text-headline-md">Motif de l'alerte</h3></div>
+          <p class="font-body-sm text-body-sm text-on-surface-variant mt-2 bg-surface p-4 rounded border border-border-default"><strong class="text-on-surface">Correspondance forte avec une PPE :</strong> M. ADANHOUNME K. (88%)</p>
+        </div>
+        <div class="flex gap-3 mt-6 justify-end border-t border-border-default pt-4">
+          <a href="fiche-client.html" class="px-4 h-10 border border-outline-variant text-on-surface rounded font-caption text-caption hover:bg-surface-container transition-colors flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">folder_open</span> Ouvrir fiche client</a>
+          <a href="alertes.html" class="px-4 h-10 bg-warning text-white rounded font-caption text-caption hover:bg-warning/90 transition-colors flex items-center gap-2"><span class="material-symbols-outlined text-[18px]">add_alert</span> Générer Alerte</a>
+        </div>
+      </div>
+    </div>
+    <div class="bg-surface-container-lowest border border-border-default rounded flex flex-col">
+      <div class="px-6 py-4 border-b border-border-default bg-[#F1F5F9] flex justify-between items-center">
+        <h3 class="font-body-sm text-body-sm font-semibold uppercase tracking-wide">Détail des correspondances</h3>
+        <span class="bg-warning/20 text-warning px-2 py-1 rounded font-label-caps text-label-caps">2 RÉSULTATS TROUVÉS</span>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead><tr class="border-b border-border-default bg-surface">
+            <th class="py-cell-padding-v px-cell-padding-h font-label-caps text-label-caps text-on-surface-variant font-semibold">Nom sur liste</th>
+            <th class="py-cell-padding-v px-cell-padding-h font-label-caps text-label-caps text-on-surface-variant font-semibold">Type</th>
+            <th class="py-cell-padding-v px-cell-padding-h font-label-caps text-label-caps text-on-surface-variant font-semibold">Liste d'origine</th>
+            <th class="py-cell-padding-v px-cell-padding-h font-label-caps text-label-caps text-on-surface-variant font-semibold text-right">Score de ressemblance</th></tr></thead>
+          <tbody class="font-data-table text-data-table">
+            <tr class="border-b border-border-default hover:bg-surface-container-low"><td class="py-cell-padding-v px-cell-padding-h font-medium">ADANHOUNME Koffi</td>
+              <td class="py-cell-padding-v px-cell-padding-h"><span class="px-2 py-0.5 rounded text-xs font-medium bg-secondary-container text-on-secondary-container">PPE</span></td>
+              <td class="py-cell-padding-v px-cell-padding-h text-on-surface-variant">Registre National Bénin</td>
+              <td class="py-cell-padding-v px-cell-padding-h text-right"><div class="flex items-center justify-end gap-2"><div class="w-16 h-1.5 bg-surface-container rounded overflow-hidden"><div class="bg-warning h-full w-[88%]"></div></div><span class="font-bold text-warning">88%</span></div></td></tr>
+            <tr class="hover:bg-surface-container-low"><td class="py-cell-padding-v px-cell-padding-h font-medium">ADANHOUMME K.</td>
+              <td class="py-cell-padding-v px-cell-padding-h"><span class="px-2 py-0.5 rounded text-xs font-medium bg-error-container text-on-error-container">Sanction</span></td>
+              <td class="py-cell-padding-v px-cell-padding-h text-on-surface-variant">Liste OFAC</td>
+              <td class="py-cell-padding-v px-cell-padding-h text-right"><div class="flex items-center justify-end gap-2"><div class="w-16 h-1.5 bg-surface-container rounded overflow-hidden"><div class="bg-secondary h-full w-[65%]"></div></div><span class="font-bold text-on-surface-variant">65%</span></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>
+</main>
+</div>
+<script>renderChrome('filtrage','Filtrage');</script>
+</body>
+</html>

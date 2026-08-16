@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html class="light" lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SentinelleCoop — Gestion des listes</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="app.js"></script>
+<style>body{font-family:'Inter',sans-serif;}</style>
+</head>
+<body class="bg-background text-on-background font-body-sm antialiased h-screen flex overflow-hidden">
+<nav id="sidebar"></nav>
+<div class="flex-1 ml-[260px] flex flex-col h-full overflow-hidden">
+<header id="topbar"></header>
+<main class="flex-1 overflow-y-auto mt-[56px] p-container-gap">
+<div class="max-w-6xl mx-auto space-y-6">
+  <div class="flex justify-between items-end">
+    <div><h2 class="font-display text-display">Gestion des listes</h2><p class="font-body-sm text-body-sm text-on-surface-variant mt-1">Référentiels de filtrage : sanctions et personnes politiquement exposées (PPE).</p></div>
+    <button class="h-10 px-4 bg-primary text-on-primary rounded font-body-sm font-medium flex items-center gap-2 hover:opacity-90"><span class="material-symbols-outlined text-[20px]">upload_file</span> Importer une liste</button>
+  </div>
+  <!-- Alerte obsolescence -->
+  <div class="bg-tertiary-fixed/40 border border-warning/40 rounded-lg p-4 flex items-center gap-3">
+    <span class="material-symbols-outlined text-warning">update</span>
+    <p class="text-body-sm">La liste <strong>Gel des avoirs (UEMOA)</strong> date de plus de 30 jours. Une mise à jour est recommandée pour respecter l'obligation « sans délai » (BCEAO).</p>
+  </div>
+  <!-- Tableau listes -->
+  <div class="bg-surface-header border border-border-default rounded-lg overflow-hidden">
+    <div class="px-5 py-3 border-b border-border-default"><h3 class="font-headline-md text-headline-md">Listes chargées</h3></div>
+    <table class="w-full text-left border-collapse">
+      <thead class="bg-surface font-label-caps text-label-caps uppercase text-on-surface-variant border-b border-border-default">
+        <tr><th class="px-cell-padding-h py-cell-padding-v font-semibold">Nom de la liste</th><th class="px-cell-padding-h py-cell-padding-v font-semibold">Source</th><th class="px-cell-padding-h py-cell-padding-v font-semibold">Dernière maj</th><th class="px-cell-padding-h py-cell-padding-v font-semibold text-right">Entrées</th><th class="px-cell-padding-h py-cell-padding-v font-semibold">État</th><th class="px-cell-padding-h py-cell-padding-v font-semibold text-right">Actions</th></tr></thead>
+      <tbody class="font-data-table text-data-table divide-y divide-border-default">
+        <tr class="hover:bg-surface-container-low"><td class="px-cell-padding-h py-2.5 font-medium">Sanctions ONU</td><td class="px-cell-padding-h py-2.5 text-on-surface-variant">Conseil de sécurité ONU</td><td class="px-cell-padding-h py-2.5">22/05/2024</td><td class="px-cell-padding-h py-2.5 text-right">1 204</td><td class="px-cell-padding-h py-2.5"><span class="inline-flex items-center gap-1 text-success font-medium"><span class="w-1.5 h-1.5 rounded-full bg-success"></span>À jour</span></td><td class="px-cell-padding-h py-2.5 text-right"><button class="p-1 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container"><span class="material-symbols-outlined text-[18px]">refresh</span></button></td></tr>
+        <tr class="hover:bg-surface-container-low"><td class="px-cell-padding-h py-2.5 font-medium">Liste OFAC (US)</td><td class="px-cell-padding-h py-2.5 text-on-surface-variant">US Treasury</td><td class="px-cell-padding-h py-2.5">20/05/2024</td><td class="px-cell-padding-h py-2.5 text-right">9 872</td><td class="px-cell-padding-h py-2.5"><span class="inline-flex items-center gap-1 text-success font-medium"><span class="w-1.5 h-1.5 rounded-full bg-success"></span>À jour</span></td><td class="px-cell-padding-h py-2.5 text-right"><button class="p-1 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container"><span class="material-symbols-outlined text-[18px]">refresh</span></button></td></tr>
+        <tr class="hover:bg-surface-container-low"><td class="px-cell-padding-h py-2.5 font-medium">PPE — Registre National Bénin</td><td class="px-cell-padding-h py-2.5 text-on-surface-variant">ANSSFD / CENTIF</td><td class="px-cell-padding-h py-2.5">18/05/2024</td><td class="px-cell-padding-h py-2.5 text-right">642</td><td class="px-cell-padding-h py-2.5"><span class="inline-flex items-center gap-1 text-success font-medium"><span class="w-1.5 h-1.5 rounded-full bg-success"></span>À jour</span></td><td class="px-cell-padding-h py-2.5 text-right"><button class="p-1 text-on-surface-variant hover:text-primary rounded hover:bg-surface-container"><span class="material-symbols-outlined text-[18px]">refresh</span></button></td></tr>
+        <tr class="hover:bg-surface-container-low bg-tertiary-fixed/20"><td class="px-cell-padding-h py-2.5 font-medium">Gel des avoirs (UEMOA)</td><td class="px-cell-padding-h py-2.5 text-on-surface-variant">BCEAO</td><td class="px-cell-padding-h py-2.5">10/04/2024</td><td class="px-cell-padding-h py-2.5 text-right">318</td><td class="px-cell-padding-h py-2.5"><span class="inline-flex items-center gap-1 text-warning font-medium"><span class="w-1.5 h-1.5 rounded-full bg-warning"></span>Obsolète</span></td><td class="px-cell-padding-h py-2.5 text-right"><button class="p-1 text-warning hover:bg-surface-container rounded"><span class="material-symbols-outlined text-[18px]">refresh</span></button></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- Zone import -->
+  <div class="bg-surface-header border border-dashed border-outline-variant rounded-lg p-8 flex flex-col items-center justify-center text-center">
+    <span class="material-symbols-outlined text-4xl text-outline mb-2">cloud_upload</span>
+    <p class="text-body-sm font-medium">Glissez un fichier de liste (CSV / XML) ici</p>
+    <p class="font-caption text-caption text-on-surface-variant mt-1">ou cliquez pour parcourir — l'import met à jour toutes les caisses au prochain partage</p>
+  </div>
+</div>
+</main>
+</div>
+<script>renderChrome('listes','Gestion des listes');</script>
+</body>
+</html>

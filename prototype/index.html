@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html class="light" lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SentinelleCoop — Connexion</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="app.js"></script>
+<style>body{font-family:'Inter',sans-serif;}</style>
+</head>
+<body class="bg-primary text-on-background antialiased h-screen flex items-center justify-center p-6">
+<div class="w-full max-w-sm bg-surface-header border border-border-default rounded-xl overflow-hidden">
+  <div class="bg-primary px-8 pt-8 pb-6 flex flex-col items-center">
+    <div class="w-16 h-16 rounded-full bg-surface-container-high mb-3 flex items-center justify-center">
+      <span class="material-symbols-outlined text-4xl text-primary" style="font-variation-settings:'FILL' 1;">shield_person</span>
+    </div>
+    <h1 class="font-display text-display text-on-primary">SentinelleCoop</h1>
+    <p class="font-caption text-caption text-primary-fixed-dim mt-1">Portail Conformité — LBC/FT</p>
+  </div>
+  <form class="p-8 flex flex-col gap-4" onsubmit="window.location.href='dashboard.html';return false;">
+    <div class="flex flex-col gap-1">
+      <label class="font-caption text-caption text-on-surface-variant">Identifiant agent</label>
+      <input class="h-10 px-3 border-outline-variant rounded focus:ring-1 focus:ring-primary focus:border-primary text-body-sm" type="text" value="agent.conformite" required/>
+    </div>
+    <div class="flex flex-col gap-1">
+      <label class="font-caption text-caption text-on-surface-variant">Mot de passe</label>
+      <input class="h-10 px-3 border-outline-variant rounded focus:ring-1 focus:ring-primary focus:border-primary text-body-sm" type="password" value="123456" required/>
+    </div>
+    <button class="h-10 mt-2 bg-primary text-on-primary rounded font-body-sm font-medium hover:opacity-90 transition-opacity flex items-center justify-center gap-2" type="submit">
+      <span class="material-symbols-outlined text-[20px]">login</span> Se connecter
+    </button>
+  </form>
+  <div class="px-8 pb-6 flex items-center justify-between">
+    <span class="flex items-center gap-2 px-3 py-1 bg-surface-container rounded-full border border-outline-variant/50">
+      <span class="w-2 h-2 rounded-full bg-warning animate-pulse"></span>
+      <span class="font-caption text-caption text-on-surface-variant">Mode hors-ligne actif</span>
+    </span>
+    <span class="font-caption text-caption text-outline">v0.1 — prototype</span>
+  </div>
+</div>
+</body>
+</html>
